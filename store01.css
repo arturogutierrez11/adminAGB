@@ -1,0 +1,6 @@
+@media (max-width: 640px) {
+    .custom-card {
+        border: 2px solid #E2E8F0;
+        background-color: #F7FAFC;
+    }
+}

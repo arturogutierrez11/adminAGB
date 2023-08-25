@@ -1,0 +1,11 @@
+  /* Fondo personalizado */
+  body {
+    background-color: #141414; /* Negro clarito */
+}
+
+/* Estilos personalizados para los contenedores */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
