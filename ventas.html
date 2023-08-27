@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/global.css" rel="stylesheet">
+    <!-- Agrega el enlace a la hoja de estilos de Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Agrega el enlace a la hoja de estilos de Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+     
+     table {
+    width: 90%; /* Establece el ancho al 90% del contenedor padre */
+    height: 80vh; /* Establece el alto al 80% del alto de la ventana */
+    background-color: white; /* Establece el fondo en blanco */
+    border-collapse: collapse;
+    margin: 0 auto; /* Centra la tabla horizontalmente */
+    border-radius: 2%
+}
+
+    table, th, td {
+        border: 1px solid #ccc;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #000000;
+        font-weight: bold;
+        color: #ccc;
+    }
+
+    /* Estilos para las filas impares */
+    tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+
+    /* Estilos para los enlaces en la columna "URL Amazon" y "Store" */
+    td:nth-child(5) a,
+    td:nth-child(6) a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    td:nth-child(5) a:hover,
+    td:nth-child(6) a:hover {
+        text-decoration: underline;
+    }
+
+    /* Estilos para el encabezado de la página */
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+</style>
+  
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black p-2">
+        <div class="container text-white d-flex justify-content-between align-items-center">
+            <a class="navbar-brand" href="/panelSote01.html">HUA-HUM</a>
+        </div>
+    </nav>
+    <div class="container-fluid mt-4">
+        <h1 class="text-center text-3xl text-white mb-4">Listings Cargados</h1>
+        <div class="d-flex justify-content-center"> <!-- Centra la tabla verticalmente -->
+            <table class="table table-bordered table-rounded rounded-lg">
+                <thead >
+                    <tr class="bg-black w-96 p-4  shadow-lg" >
+                        <th class="p-2">Timestamp</th>
+                        <th class="p-2">Mail</th>
+                        <th class="p-2">Url</th>
+                        <th class="p-2">Asin</th>
+                        <th class="p-2">Brand</th>
+                        <th class="p-2">Bsr</th>
+                        <th class="p-2">Prioridad</th>
+                        <th class="p-2">Estado</th>
+                        <!-- <th class="p-2">Store</th>
+                        <th class="p-2">BSR</th> -->
+                    </tr>
+                </thead>
+                <tbody id="tabla-body">
+                    <!-- Aquí se cargarán los datos de la hoja de cálculo usando JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+
+    <script>
+        // Tu código JavaScript para cargar los datos en la tabla va aquí
+        let SHEET_ID = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
+        let SHEET_TITLE = 'Sheet1';
+        let SHEET_RANGE = 'A1:H11';
+        let FULL_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${SHEET_TITLE}&range=${SHEET_RANGE}`;
+
+        fetch(FULL_URL)
+    .then(res => res.text())
+    .then(rep => {
+        let data = JSON.parse(rep.substr(47).slice(0,-2));
+        console.log(data)
+
+        // Obtener la tabla existente y su cuerpo
+        let tablaBody = document.getElementById('tabla-body');
+
+        // Limpiar la tabla existente eliminando todas las filas
+        while (tablaBody.firstChild) {
+            tablaBody.removeChild(tablaBody.firstChild);
+        }
+
+        // Iterar a través de los nuevos datos y agregar filas a la tabla
+        for (let i = 1; i < data.table.rows.length; i++) {
+            let row = document.createElement('tr');
+            for (let j = 0; j < data.table.cols.length; j++) {
+                let cell = document.createElement('td');
+                let value = data.table.rows[i].c[j].v;
+                
+                // Si quieres que los enlaces sean clicables, descomenta estas líneas
+                if (j === 2) {
+                     let link = document.createElement('a');
+                     link.href = value;
+                     link.textContent = "Ver enlace";
+                     cell.appendChild(link);
+                 } else {
+                    cell.textContent = value;
+                 }
+                row.appendChild(cell);
+            }
+            tablaBody.appendChild(row);
+        }
+    })
+    .catch(error => {
+        console.error('Error al obtener los datos:', error);
+    });
+
+</script>
+</body>
+</html>
