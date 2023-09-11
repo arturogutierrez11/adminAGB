@@ -18,19 +18,19 @@
     </nav>
 
     
-    <div class="container  mt-8">
-        <div class="content ">
+    <div class="container mt-8">
+        <div class="content">
             <h1 class="main-title">HUA-HUM</h1>
             <p class="sub-title">Inicia sesión para acceder a tu cuenta.</p>
-            
-            <form id="login-form bg-black " class="mt-4">
+    
+            <form id="login-form" class="bg-black mt-4">
                 <div class="mb-4">
-                    <label class="block text-xl text-white font-medium">Usuario:</label>
-                    <input type="text" id="username" class=" px-3 py-2 rounded border" required>
+                    <label class="block text-xl text-white font-medium" for="username">Usuario:</label>
+                    <input type="text" id="username" class="px-3 py-2 rounded border" required>
                 </div>
                 <div class="mb-4">
-                    <label class="block text-xl text-white font-medium">Contraseña:</label>
-                    <input type="password" id="password" class=" px-3 py-2 rounded border" required>
+                    <label class="block text-xl text-white font-medium" for="password">Contraseña:</label>
+                    <input type="password" id="password" class="px-3 py-2 rounded border" required>
                 </div>
                 <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Iniciar Sesión</button>
             </form>
@@ -40,16 +40,15 @@
         const loginForm = document.getElementById('login-form');
         const usernameInput = document.getElementById('username');
         const passwordInput = document.getElementById('password');
-
-        loginForm.addEventListener('submit', function(event) {
+    
+        loginForm.addEventListener('submit', function (event) {
             event.preventDefault();
-
+    
             const username = usernameInput.value;
             const password = passwordInput.value;
-
+    
             // Simulando una validación de inicio de sesión
             if (username === 'Turi' && password === '123456') {
-              
                 window.location.href = '/panel.html';
                 // Aquí puedes redirigir a otra página o realizar otras acciones
             } else {
@@ -57,5 +56,6 @@
             }
         });
     </script>
+    
 </body>
 </html>
