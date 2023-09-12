@@ -1,0 +1,65 @@
+.xx{
+    background-color: #141414;
+ }
+     table {
+    width: 90%; /* Establece el ancho al 90% del contenedor padre */
+    height: 80vh; /* Establece el alto al 80% del alto de la ventana */
+    background-color: white; /* Establece el fondo en blanco */
+    border-collapse: collapse;
+    margin: 0 auto; /* Centra la tabla horizontalmente */
+    border-radius: 2%
+}
+
+    table, th, td {
+        border: 1px solid #ccc;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #000000;
+        font-weight: bold;
+        color: #ccc;
+    }
+
+    /* Estilos para las filas impares */
+    tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+
+    /* Estilos para los enlaces en la columna "URL Amazon" y "Store" */
+    td:nth-child(5) a,
+    td:nth-child(6) a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    td:nth-child(5) a:hover,
+    td:nth-child(6) a:hover {
+        text-decoration: underline;
+    }
+
+    /* Estilos para el encabezado de la página */
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    @media (min-width: 1000px) {
+            
+            .x-table {
+                width: 80%;
+                margin-bottom: 1rem;
+              margin-right: 50%;
+              margin-left: 10%;
+            }}
+            @media (max-width: 640px) {
+            
+            .x-table {
+                width: 90%;
+                margin-bottom: 5rem;
+              margin-right: 5%;
+              margin-left: 5%;
+            }}

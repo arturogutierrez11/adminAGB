@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Publicaciones Activas</title>
+    <!-- <script defer  src="/aceptados.js" > </script> -->
+    <script defer src="theme.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/global.css" rel="stylesheet">
+    <link href="/css globales/navbar.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/Store 01/publicaciones/index.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet" />
+  </head>
+<body class="xx">
+    <nav class="navbar-custom">
+      <a class="navbar-brand" href="/Store 01/PanelStore01.html">
+          <img src="/images/logohh.jpeg" alt="Logo HUA-HUM">
+      </a>
+      <h2>Hua-Hum Store</h2>
+    </nav>
+    <div class="container-fluid mt-4">
+        <h1 class="text-center text-3xl text-white mb-3">Publicaciones Activas</h1>
+        <div class="d-flex justify-content-center x-table"> <!-- Centra la tabla verticalmente -->
+            <table class="table table-bordered table-rounded rounded-lg">
+                <thead >
+                    <tr class="bg-black w-96 p-4  shadow-lg" >
+                        <th class="p-2">Sku</th>
+                        <th class="p-2">Asin</th>
+                        <th class="p-2">Fecha de Publicacion</th>
+                        <th class="p-2">stock</th>
+                        <th class="p-2">precio</th>
+                        <th class="p-2">Url Amazon</th>
+                        <!-- <th class="p-2">Store</th>
+                        <th class="p-2">BSR</th> -->
+                    </tr>
+                </thead>
+                <tbody id="tabla-body">
+                    <!-- Aquí se cargarán los datos de la hoja de cálculo usando JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        // Tu código JavaScript para cargar los datos en la tabla va aquí
+        let SHEET_ID = '1AEbeU_vzUOPWdzCluQyRfzcktuxix84t';
+        let SHEET_TITLE = 'listings';
+        let SHEET_RANGE = 'A2:F10';
+        let FULL_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${SHEET_TITLE}&range=${SHEET_RANGE}`;
+
+        fetch(FULL_URL)
+    .then(res => res.text())
+    .then(rep => {
+        let data = JSON.parse(rep.substr(47).slice(0,-2));
+        console.log(data)
+
+        // Obtener la tabla existente y su cuerpo
+        let tablaBody = document.getElementById('tabla-body');
+
+        // Limpiar la tabla existente eliminando todas las filas
+        while (tablaBody.firstChild) {
+            tablaBody.removeChild(tablaBody.firstChild);
+        }
+
+        // Iterar a través de los nuevos datos y agregar filas a la tabla
+        for (let i = 1; i < data.table.rows.length; i++) {
+            let row = document.createElement('tr');
+            for (let j = 0; j < data.table.cols.length; j++) {
+                let cell = document.createElement('td');
+                let value = data.table.rows[i].c[j].v;
+                
+                // Si quieres que los enlaces sean clicables, descomenta estas líneas
+                 if (j === 5) {
+                     let link = document.createElement('a');
+                     link.href = value;
+                     link.textContent = "Ver enlace";
+                     cell.appendChild(link);
+                 } else {
+                    cell.textContent = value;
+                 }
+                row.appendChild(cell);
+            }
+            tablaBody.appendChild(row);
+        }
+    })
+    .catch(error => {
+        console.error('Error al obtener los datos:', error);
+    });
+
+    </script>
+</body>
+</html>

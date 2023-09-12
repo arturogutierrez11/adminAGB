@@ -1,0 +1,23 @@
+
+   /* styles.css */
+.navbar-custom {
+    background-color: #000; /* Fondo negro */
+    padding: 8px 16px; /* Relleno en la parte superior y los lados */
+    height: 80px; /* Altura fija */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-custom a.navbar-brand img {
+    height: 60px; /* Altura de la imagen del logotipo */
+}
+
+.navbar-custom h2 {
+    color: #fff; /* Color del texto en blanco */
+    font-size: 24px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    text-align: center;
+}
+ 
+
