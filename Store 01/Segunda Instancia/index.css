@@ -1,72 +1,96 @@
-       
-     
-     table {
-        width: 90%; /* Establece el ancho al 90% del contenedor padre */
-        height: 80vh; /* Establece el alto al 80% del alto de la ventana */
-        background-color: white; /* Establece el fondo en blanco */
-        border-collapse: collapse;
-        margin: 0 auto; /* Centra la tabla horizontalmente */
-        border-radius: 2%
-    }
-    
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-    
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-    
-        th {
-            background-color: #1a202c;
-            font-weight: bold;
-            color: #ccc;
-        }
-    
-        /* Estilos para las filas impares */
-        tr:nth-child(odd) {
-            background-color: #f9f9f9;
-        }
-    
-        /* Estilos para los enlaces en la columna "URL Amazon" y "Store" */
-        td:nth-child(5) a,
-        td:nth-child(6) a {
-            color: #007bff;
-            text-decoration: none;
-        }
-    
-        td:nth-child(5) a:hover,
-        td:nth-child(6) a:hover {
-            text-decoration: underline;
-        }
-    
-        /* Estilos para el encabezado de la página */
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        .table-scrollable {
-        overflow-x: auto; /* Habilita el desplazamiento horizontal */
-        max-width: 100%; /* Limita el ancho máximo al 100% del contenedor padre */
-    }
+
     .xx{
         background-color: #141414;
      }
-     @media (min-width: 1000px) {
-                
-                .x-tamble {
-                    width: 80%;
-                    margin-bottom: 1rem;
-                  margin-right: 50%;
-                  margin-left: 10%;
-                }}
-                @media (max-width: 640px) {
-                
-                .x-tamble {
-                    width: 100%;
-                    margin-bottom: 5rem;
-                  margin-right: 5%;
-                  margin-left: 5%;
-                }}
     
+  
+.card {
+   
+    font-family: "Amazon Ember", Arial, sans-serif; /* Utiliza la fuente Amazon Ember o una similar */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    background-color: #fff;
+    font-weight: bold; /* Hace que la fuente sea más gruesa */
+    color: #000; /* Color de fuente negro */
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+.card-description {
+    font-size: 14px;
+    margin: 5px 0;
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+.card-button {
+    background-color: #f0c14b;
+    border: 1px solid #a88734;
+    color: #111;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 5px 10px;
+    text-align: center; /* Centra el texto horizontalmente */
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    display: block; /* Hace que el botón sea un bloque y ocupe todo el ancho */
+    margin: 10px auto; /* Centra el botón horizontalmente */
+}
+
+.card-button:hover {
+    background-color: #f4d078;
+}
+/* Estilos para el título de la página */
+h1 {
+    color: rgb(0, 0, 0); /* Color de fuente blanco */
+    white-space: nowrap; /* Evita el salto de línea del texto */
+    overflow: hidden; /* Oculta cualquier desbordamiento de texto */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos (...) si el texto es demasiado largo */
+}
+/* Estilo para el contenedor de las tarjetas */
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Estilo para cada tarjeta */
+.card {
+    flex: 0 0 calc(33.3333% - 10px); /* Distribuye las tarjetas en filas de tres con espaciado */
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    color: #000;
+}
+
+/* Media query para ajustar el diseño en pantallas más pequeñas */
+@media (max-width: 767px) {
+    .card {
+        flex: 0 0 calc(50% - 10px); /* Distribuye las tarjetas en filas de dos en pantallas más pequeñas */
+    }
+}
+
+/* Media query para ajustar el diseño en pantallas aún más pequeñas */
+@media (max-width: 575px) {
+    .card {
+        flex: 0 0 100%; /* Distribuye las tarjetas en una sola columna en pantallas muy pequeñas */
+    }
+}

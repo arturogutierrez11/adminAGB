@@ -1,0 +1,161 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    <title>Formulario y Tabla</title>
+    <script defer  src="/aceptados.js" > </script>
+    <script defer src="theme.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/global.css" rel="stylesheet">
+    <link href="/css globales/navbar.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <link href="/Store 01/Segunda Instancia/index.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
+  
+</head>
+<body class="xx">
+  <nav class="navbar-custom">
+    <a class="navbar-brand" href="/Store 01/PanelStore01.html">
+        <img src="/images/logohh.jpeg" alt="Logo HUA-HUM">
+    </a>
+    <h2>Hua-Hum Store</h2>
+  </nav>
+  <script defer  src="/aceptados.js" ></script>
+  <div class="bg-black   rounded-md m-6 ">
+    <div class="flex flex-col items-center mt-4 p-6 ">
+        <label for="brandFilter" class="text-white mb-2 mt-4">Filtrar por Brand</label>
+        <input type="text" id="brandFilter" class="px-3 py-2 rounded border bg-white text-gray-800 focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-400">
+    </div>
+    <div class="flex-grow"></div> 
+     <div class="flex flex-col items-center">
+        <label for="asinFilter" class="text-white mb-2">Filtrar por Asin</label>
+        <input type="text" id="asinFilter" class="px-3 py-2 rounded border bg-white text-gray-800 focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-400">
+        <button class="bg-blue-700 text-white mt-2 mb-2 py-1 px-2 rounded w-20 hover:bg-blue-600 transition duration-300">Buscar</button>
+    </div>
+  </div>
+  <div class="table-scrollable m-6 rounded-lg x-tamble"> Agrega un nuevo contenedor para el desplazamiento -->
+    <!--  <table class="table table-bordered table-rounded rounded-lg mb-6">
+              <thead >
+                  <tr class="w-96 p-4  shadow-lg" >
+                      <th class="p-2">#</th>
+                      <th class="p-2">Brand</th>
+                      <th class="p-2">url</th>
+                      <th class="p-2">Asin</th>
+                      <th class="p-2">status</th>
+                      <th class="p-2">title</th>
+                      <th class="p-2">category</th>
+                      <th class="p-2">size</th>
+                      <th class="p-2">costo</th>
+                      <th class="p-2">precio de venta</th>
+                      <th class="p-2">store</th>
+                      <th class="p-2">sellers</th>
+                      <th class="p-2">tarifa amazon</th>
+                      <th class="p-2">envio venta</th>
+                      <th class="p-2">costo almacenamiento</th>
+                      <th class="p-2">envio 3PL</th>
+                      <th class="p-2">tax sale</th>
+                      <th class="p-2">beneficio Neto</th>
+                      <th class="p-2">Margen Neto</th>
+                  </tr>
+              </thead>
+              <tbody id="tabla-body">
+                  Aquí se cargarán los datos de la hoja de cálculo usando JavaScript 
+             </tbody>
+      </table>
+        </div>
+        </div>
+  </div> -->
+<!--</body>
+
+
+<script> 
+//     // Tu código JavaScript para cargar los datos en la tabla va aquí
+//     let SHEET_ID = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
+//     let SHEET_TITLE = 'aceptados';
+//     let SHEET_RANGE = 'A2:S15';
+//     let FULL_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${SHEET_TITLE}&range=${SHEET_RANGE}`;
+
+//     fetch(FULL_URL)
+// .then(res => res.text())
+// .then(rep => {
+//     let data = JSON.parse(rep.substr(47).slice(0,-2));
+//     console.log(data)
+
+//     // Obtener la tabla existente y su cuerpo
+//     let tablaBody = document.getElementById('tabla-body');
+
+//     // Limpiar la tabla existente eliminando todas las filas
+//     while (tablaBody.firstChild) {
+//         tablaBody.removeChild(tablaBody.firstChild);
+//     }
+
+//     // Iterar a través de los nuevos datos y agregar filas a la tabla
+//     for (let i = 1; i < data.table.rows.length; i++) {
+//         let row = document.createElement('tr');
+//         for (let j = 0; j < data.table.cols.length; j++) {
+//             let cell = document.createElement('td');
+//             let value = data.table.rows[i].c[j].v;
+            
+//             // Si quieres que los enlaces sean clicables, descomenta estas líneas
+//              if (j === 2) {
+//                  let link = document.createElement('a');
+//                  link.href = value;
+//                  link.textContent = "Ver enlace";
+//                  cell.appendChild(link);
+//              } else {
+//                 cell.textContent = value;
+//              }
+//             row.appendChild(cell);
+//         }
+//         tablaBody.appendChild(row);
+//     }
+// })
+// .catch(error => {
+//     console.error('Error al obtener los datos:', error);
+// });
+
+ </script>
+<script> -->
+    <!-- // ... Tu código existente ...
+
+document.getElementById('brandFilter').addEventListener('input', function () {
+    let filterValue = this.value.toLowerCase();
+    let rows = document.querySelectorAll('#tabla-body tr');
+
+    for (let row of rows) {
+        let brandCell = row.querySelector('td:nth-child(2)');
+        let brandText = brandCell.textContent.toLowerCase();
+
+        if (brandText.includes(filterValue)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    }
+});
+
+</script>
+<script> -->
+   
+
+   <!-- < // Agrega un listener al input del filtro por Asin
+    document.getElementById('asinFilter').addEventListener('input', function () {
+        let filterValue = this.value.toLowerCase();
+        let rows = document.querySelectorAll('#tabla-body tr');
+
+        for (let row of rows) {
+            let asinCell = row.querySelector('td:nth-child(4)'); // Columna Asin
+            let asinText = asinCell.textContent.toLowerCase();
+
+            if (asinText.includes(filterValue)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        }
+    });
+
+>
+</script> -->
