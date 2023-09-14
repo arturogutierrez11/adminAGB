@@ -2,6 +2,7 @@
     .xx{
         background-color: #141414;
      }
+
     
   
 .card {
@@ -52,6 +53,26 @@
     display: block; /* Hace que el botón sea un bloque y ocupe todo el ancho */
     margin: 10px auto; /* Centra el botón horizontalmente */
 }
+/* styles.css */
+/* styles.css */
+
+/* Define el estilo de las tarjetas cuando el estado es "aceptado" */
+.card-aceptado {
+    position: relative; /* Establece la posición relativa para que los elementos secundarios se posicionen en relación con la tarjeta */
+}
+
+/* Agrega un fondo semitransparente cuando el estado es "aceptado" */
+.card-aceptado::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(29, 27, 27, 0.3); /* Cambia el color de fondo a gris transparente */
+    z-index: 1; /* Asegura que el fondo esté por encima del contenido de la tarjeta */
+}
+
 
 .card-button:hover {
     background-color: #f4d078;
@@ -69,6 +90,7 @@ h1 {
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
 
 /* Estilo para cada tarjeta */
 .card {

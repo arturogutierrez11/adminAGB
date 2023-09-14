@@ -38,8 +38,8 @@
     </div>
     
     <script>
-        // Tu código JavaScript para cargar los datos en las tarjetas va aquí
-        let SHEET_ID = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
+      // Tu código JavaScript para cargar los datos en las tarjetas va aquí
+      let SHEET_ID = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
         let SHEET_TITLE = 'aceptados';
         let SHEET_RANGE = 'A2:S14';
         let FULL_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${SHEET_TITLE}&range=${SHEET_RANGE}`;
@@ -63,6 +63,11 @@
               // Crear una tarjeta (card) de Bootstrap
               let card = document.createElement('div');
               card.className = 'col-md-4 mb-4';
+
+              // Verificar si el estado es "aceptado" y aplicar la clase card-aceptado
+              if (productData[5].v === 'aceptado') {
+                card.classList.add('card-aceptado');
+              }
 
               // Crear el contenido de la tarjeta (utiliza las clases de Bootstrap para dar estilo)
               card.innerHTML = `
@@ -96,9 +101,29 @@
             }
           })
           .catch(error => {
-            console.error('Error al obtener los datos:', error);
-          });
+            console.error('Error al obtener los datos:', error);})
     </script>
+<script>
+    // Obtener el elemento del párrafo
+    var statusParagraph = document.querySelector(".status-color");
+
+    // Obtener el valor del estado
+    var statusValue = "${productData[5].v}";
+
+    // Función para establecer el color según el valor del estado
+    function setColorBasedOnStatus(value) {
+        if (value === "rechazado") {
+            return "red";
+        } else if (value === "aceptado") {
+            return "green";
+        } else {
+            return "blue";
+        }
+    }
+
+    // Aplicar el color al estilo del párrafo
+    statusParagraph.style.color = setColorBasedOnStatus(statusValue);
+</script>
 
 </body>
 </html>
@@ -125,3 +150,4 @@
         });
    
 </script>
+
