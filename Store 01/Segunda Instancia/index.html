@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    <title>Segunda instancia </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+    <title>Segunda instancia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="/global.css" rel="stylesheet">
     <link href="/css globales/navbar.css" rel="stylesheet">
     <link href="/Store 01/Segunda Instancia/index.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="ruta/a/fontawesome-all.min.css">
 </head>
 <body class="xx">
     <nav class="navbar-custom">
@@ -16,9 +18,9 @@
             <img src="/images/logohh.jpeg" alt="Logo HUA-HUM">
         </a>
         <h2>Hua-Hum Store</h2>
-      </nav>
-      <script defer  src="/aceptados.js" ></script>
-      <div class="bg-black rounded-md m-6">
+    </nav>
+    <script defer src="/aceptados.js"></script>
+    <div class="bg-black rounded-md m-6">
         <div class="flex flex-col items-center mt-4 p-6">
             <label for="brandFilter" class="text-white mb-2 mt-4">Filtrar por Brand</label>
             <input type="text" id="brandFilter" class="px-3 py-2 rounded border bg-white text-gray-800 focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-400">
@@ -31,78 +33,101 @@
         </div>
     </div>
     <div class="container mt-4">
-       
         <div class="row" id="card-container">
             <!-- Aquí se agregarán las tarjetas dinámicamente -->
         </div>
     </div>
-    
     <script>
-      // Tu código JavaScript para cargar los datos en las tarjetas va aquí
-      let SHEET_ID = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
+        // Tu código JavaScript para cargar los datos en las tarjetas va aquí
+        let SHEET_ID = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
         let SHEET_TITLE = 'aceptados';
-        let SHEET_RANGE = 'A2:S14';
+        let SHEET_RANGE = 'A2:S17';
         let FULL_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${SHEET_TITLE}&range=${SHEET_RANGE}`;
 
         fetch(FULL_URL)
-          .then(res => res.text())
-          .then(rep => {
-            let data = JSON.parse(rep.substr(47).slice(0, -2));
-            console.log(data);
+            .then(res => res.text())
+            .then(rep => {
+                let data = JSON.parse(rep.substr(47).slice(0, -2));
+                console.log(data);
 
-            // Obtener el contenedor donde se agregarán las tarjetas
-            let cardContainer = document.getElementById('card-container');
+                // Obtener el contenedor donde se agregarán las tarjetas
+                let cardContainer = document.getElementById('card-container');
 
-            // Limpiar el contenedor existente eliminando todas las tarjetas
-            cardContainer.innerHTML = '';
+                // Limpiar el contenedor existente eliminando todas las tarjetas
+                cardContainer.innerHTML = '';
 
-            // Iterar a través de los nuevos datos y crear tarjetas
-            for (let i = 1; i < data.table.rows.length; i++) {
-              let productData = data.table.rows[i].c;
+                // Función para establecer el color del párrafo según el estado
+                function setColorBasedOnStatus(value) {
+                    if (value === 'rechazado') {
+                        return 'red';
+                    } else if (value === 'aceptado') {
+                        return 'green';
+                    } else {
+                        return 'blue';
+                    }
+                }
 
-              // Crear una tarjeta (card) de Bootstrap
-              let card = document.createElement('div');
-              card.className = 'col-md-4 mb-4';
+                // Iterar a través de los nuevos datos y crear tarjetas
+                for (let i = 1; i < data.table.rows.length; i++) {
+                    let productData = data.table.rows[i].c;
 
-              // Verificar si el estado es "aceptado" y aplicar la clase card-aceptado
-              if (productData[5].v === 'aceptado') {
-                card.classList.add('card-aceptado');
-              }
+                    // Crear una tarjeta (card) de Bootstrap
+                    let card = document.createElement('div');
+                    card.className = 'col-md-4 mb-4';
 
-              // Crear el contenido de la tarjeta (utiliza las clases de Bootstrap para dar estilo)
-              card.innerHTML = `
-              <div class="card border-dark rounded" style="width: 18rem;">
-                <img src=${productData[4].v} class="card-img-top" alt="Imagen del producto">
-                <div class="card-body  text-center">
-                    <h5 class="card-title">${productData[6].v}</h5>
-                    <p class="card-description">ASIN N°  ${productData[3].v}</p>
-                    <a href="${productData[2].v}" target="_blank" class="btn btn-primary card-button">Go to Amazon Product</a>
-                    <p class="card-description">Brand ${productData[1].v}</p>
-                    <p class="card-description">Status: ${productData[5].v}</p>
-                    
-                    <p class="card-description">Category: ${productData[7].v}</p>
-                    <p class="card-description">size ${productData[8].v}</p>
-                    <p class="card-description">Costo ${productData[9].v}us</p>
-                    <p class="card-description">Precio de venta: ${productData[10].v} us</p>
-                  
-                    <p class="card-description">Sellers: ${productData[12].v}</p>
-                    <p class="card-description">Tarifa Amazon: ${productData[13].v} us</p>
-                    <p class="card-description">Envio Comprador: ${productData[14].v} us</p>
-                    <p class="card-description"> Costo /m almacen. ${productData[15].v} us</p>
-                    <p class="card-description">Envio al deposito ${productData[16].v} us</p>
-                    <p class="card-description">Tax sale Miami ${productData[17].v} us</p>
-                    <p class="card-description">Margen NETO: ${productData[18].v} us</p>
-                </div>
-             </div>
-              `;
+                    // Verificar si el estado es "aceptado" y aplicar la clase card-aceptado
+                    if (productData[5].v === 'aceptado') {
+                        card.classList.add('card-aceptado');
+                    }
+                    let cardTitleId = `cardTitle-${i}`;
 
-              // Agregar la tarjeta al contenedor
-              cardContainer.appendChild(card);
-            }
-          })
-          .catch(error => {
-            console.error('Error al obtener los datos:', error);})
+                    // Crear el contenido de la tarjeta (utiliza las clases de Bootstrap para dar estilo)
+                    card.innerHTML = `
+                        <div class="card border-dark rounded" style="width: 18rem;">
+                            <img src=${productData[4].v} class="card-img-top" alt="Imagen del producto">
+                            <div class="card-body  text-center">
+                                <h5 class="card-title" id="${cardTitleId}">${productData[6].v}</h5>
+            
+                <button class="copy-button" data-title-id="${cardTitleId}"><i class="fas fa-copy"></i> copy</button>
+                                <p class="card-description">ASIN N°  ${productData[3].v}</p>
+                                <a href="${productData[2].v}" target="_blank" class="btn btn-primary card-button">Go to Amazon Product</a>
+                                <p class="card-description brand">${productData[1].v}</p>
+                                <p class="card-description status-color">Status: ${productData[5].v}</p>
+                                <p class="card-description">Category: ${productData[7].v}</p>
+                                <p class="card-description">size ${productData[8].v}</p>
+                                <p class="card-description">Costo ${productData[9].v}us</p>
+                                <p class="card-description">Precio de venta: ${productData[10].v} us</p>
+                                <p class="card-description">Sellers: ${productData[12].v}</p>
+                                <p class="card-description">Tarifa Amazon: ${productData[13].v} us</p>
+                                <p class="card-description">Envio Comprador: ${productData[14].v} us</p>
+                                <p class="card-description"> Costo /m almacen. ${productData[15].v} us</p>
+                                <p class="card-description">Envio al deposito ${productData[16].v} us</p>
+                                <p class="card-description">Tax sale Miami ${productData[17].v} us</p>
+                                <p class="card-description">Margen NETO: ${productData[18].v} us</p>
+                                <button id="copyIcon"><i class="fas fa-copy"></i></button>
+                            </div>
+                        </div>
+                    `;
+
+                    // Agregar la tarjeta al contenedor
+                    cardContainer.appendChild(card);
+                }
+
+                // Obtener el elemento del párrafo
+                var statusParagraph = document.querySelector('.status-color');
+
+                // Iterar sobre los párrafos y establecer el color
+                statusParagraph.forEach(paragraph => {
+                    paragraph.style.color = setColorBasedOnStatus(paragraph.textContent.trim());
+                });
+            })
+            .catch(error => {
+                console.error('Error al obtener los datos:', error);
+            });
     </script>
+</body>
+</html>
+<!-- 
 <script>
     // Obtener el elemento del párrafo
     var statusParagraph = document.querySelector(".status-color");
@@ -123,7 +148,7 @@
 
     // Aplicar el color al estilo del párrafo
     statusParagraph.style.color = setColorBasedOnStatus(statusValue);
-</script>
+</script> -->
 
 </body>
 </html>
@@ -150,4 +175,37 @@
         });
    
 </script>
+<script>
+/// Obtén todos los elementos con la clase "card-title"
+const cardTitles = document.querySelectorAll('.card-title');
 
+// Itera sobre los elementos y agrega un botón de copia a cada uno
+cardTitles.forEach((title, index) => {
+    // Crea un botón de copia
+    const copyButton = document.createElement('button');
+    copyButton.className = 'copy-button btn btn-primary';
+    copyButton.innerText = 'Copiar';
+    copyButton.dataset.index = index; // Almacena el índice del título
+
+    // Agrega un evento de clic al botón
+    copyButton.addEventListener('click', () => {
+        const textToCopy = title.textContent; // Obtiene el texto del título
+        copyToClipboard(textToCopy); // Llama a la función para copiar al portapapeles
+    });
+
+    // Agrega el botón al contenedor de la tarjeta
+    title.parentNode.appendChild(copyButton);
+});
+
+// Función para copiar al portapapeles
+function copyToClipboard(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    alert('Texto copiado al portapapeles: ' + text);
+}
+
+</script>
