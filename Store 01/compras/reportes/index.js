@@ -55,18 +55,18 @@ fetch(FULL_URL)
       tablaBody.appendChild(row);
     }
 
-   // Calcular las sumas de costos, tax sale y shipping
+ // Calcular las sumas de costos, tax sale y shipping
 let totalCost = 0;
 let totalTaxSale = 0;
 let totalShipping = 0;
 
 for (let i = 0; i < filteredData.length; i++) {
-  // Verifiquemos los valores en las columnas 4, 5 y 6
+  // Obtener los valores de las columnas 4, 5 y 6
   let costo = parseFloat(filteredData[i][3]);
   let taxSale = parseFloat(filteredData[i][4]);
   let shipping = parseFloat(filteredData[i][5]);
 
-  // Verifiquemos si los valores son válidos
+  // Verificar si los valores son válidos y agregarlos a las sumas
   if (!isNaN(costo)) {
     totalCost += costo;
   }
@@ -78,10 +78,16 @@ for (let i = 0; i < filteredData.length; i++) {
   }
 }
 
-// Actualizar los elementos en el DOM con las sumas
+// Calcular la suma total
+let totalGeneral = totalCost + totalTaxSale + totalShipping;
+
+// Actualizar los elementos en el DOM con las sumas individuales
 document.getElementById('total-cost').textContent = `$${totalCost.toFixed(2)}`;
 document.getElementById('total-tax-sale').textContent = `$${totalTaxSale.toFixed(2)}`;
 document.getElementById('total-shipping').textContent = `$${totalShipping.toFixed(2)}`;
+
+// Actualizar el elemento en el DOM con la suma total
+document.getElementById('total-general').textContent = `$${totalGeneral.toFixed(2)}`;
   })
   .catch(error => {
     console.error('Error al obtener los datos:', error);

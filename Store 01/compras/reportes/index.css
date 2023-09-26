@@ -30,77 +30,134 @@ body {
     background-color: #222;
 }
 
+/* Estilos para el contenedor principal */
 .sum-container {
+    display: flex;
+    justify-content: space-between; /* Distribuir elementos en los extremos */
     margin-top: 20px;
     padding-top: 10px;
     border-top: 1px solid #444;
-}
-
-.sum-container p {
+    text-align: center; /* Centrar el contenido en dispositivos grandes */
+  }
+  
+  /* Estilos para las sumas individuales */
+  .individual-sum {
+    flex: 1; /* Ocupa el espacio disponible en la izquierda */
+    text-align: left; /* Alineación izquierda */
+    padding-left: 10px; /* Espaciado a la izquierda */
+  }
+  
+  .individual-sum p {
     margin: 0;
     font-size: 16px;
-}
-
-#total-cost, #total-tax-sale, #total-shipping {
-    font-weight: bold;
-    color: #FFD700; /* Color dorado para resaltar los totales */
-}
-/* styles.css */
+  }
+  
+  /* Estilos para la suma total */
+  .total-sum {
+    flex: 1; /* Ocupa el espacio disponible en la derecha */
+    text-align: right; /* Alineación derecha */
+    padding-right: 10px; /* Espaciado a la derecha */
+  }
+  
+  .total-sum p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold; /* Texto en negrita para resaltar el total general */
+    color: #FFD700; /* Color dorado para resaltar el total general */
+  }
+  
+  /* Estilos para dispositivos móviles (pantallas de hasta 768px de ancho) */
+  @media (max-width: 768px) {
+    .sum-container {
+      flex-direction: column; /* Cambiar a disposición de columna en dispositivos móviles */
+    }
+  
+    .total-sum {
+      text-align: left; /* Alineación izquierda en dispositivos móviles */
+      padding-left: 10px; /* Espaciado a la izquierda en dispositivos móviles */
+      padding-right: 0; /* Eliminar espaciado a la derecha en dispositivos móviles */
+    }
+  }
+  
 
 /* Estilos para el filtro por mes y el botón */
-.filtro-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+/* Estilos para el contenedor del filtro */
+.filtro-containermes {
     background-color: #000; /* Fondo negro */
-    padding: 20px; /* Espaciado interno */
-    border-radius: 10px;
+    text-align: center; /* Centrar contenido */
+    padding: 10px; /* Espaciado interno */
+    margin: 10px auto; /* Margen exterior */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-#filtro-mes {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #333;
-    color: #fff;
-    margin-bottom: 10px;
-    width: 100%;
-    max-width: 200px;
-}
-
-label[for="filtro-mes"] {
-    font-weight: bold;
-    margin-bottom: 5px;
+/* Estilos para la etiqueta del filtro */
+.filtro-containermes label {
+    font-weight: bold; /* Texto en negrita */
     display: block; /* Mostrar en una línea separada */
-    color: #fff;
+    margin-bottom: 5px; /* Espacio inferior entre la etiqueta y el select */
 }
 
-#btn-filtrar {
-    padding: 10px 15px;
+/* Estilos para el select del filtro */
+.filtro-select {
+    padding: 10px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #333; /* Fondo del select */
+    color: #fff; /* Color del texto en el select */
+    margin-bottom: 10px; /* Espacio inferior entre el select y el botón */
+    width: 50%; /* Ancho del 100% del contenedor */
+}
+
+/* Estilos para el botón de filtrar */
+.filtro-button {
+    padding: 15px; /* Espaciado interno */
     background-color: #007bff; /* Color de fondo del botón */
     color: #fff; /* Color del texto del botón */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de puntero al pasar el ratón */
     transition: background-color 0.3s ease; /* Transición al pasar el mouse */
-    flex-shrink: 0; /* Evita que el botón se reduzca en tamaños pequeños */
+    text-align: center; /* Centrar texto */
 }
 
 /* Estilos para el botón al pasar el mouse */
-#btn-filtrar:hover {
+.filtro-button:hover {
     background-color: #0056b3; /* Color de fondo del botón al pasar el mouse */
 }
-
-/* Estilos responsivos */
+/* Estilos CSS para el modo responsive en pantallas de teléfono */
 @media (max-width: 768px) {
-    .filtro-container {
-        padding: 10px; /* Espaciado interno en tamaños pequeños */
+    /* Ajustar la altura de la tabla al 100% del alto de la pantalla */
+    .table-container {
+      height: auto; /* 100% del alto de la pantalla */
+      overflow-y: auto; /* Agregar una barra de desplazamiento vertical si es necesario */
     }
-
-    #filtro-mes {
-        width: 100%;
-        max-width: none;
-    }
-}
-
+    .table th:nth-child(7) {
+        width: 1px; /* Ajusta el ancho según tus preferencias */
+        /* Otros estilos que desees aplicar al encabezado "Shipping" */
+      }
+  }
+  /* Estilos para el gráfico de barra */
+.bar-chart {
+    width: 300px; /* Ancho del gráfico de barra */
+    height: 30px; /* Altura del gráfico de barra */
+    background-color: #ccc; /* Color de fondo del gráfico de barra */
+    border-radius: 5px; /* Bordes redondeados */
+    margin: 20px auto; /* Centrar en la página */
+  }
+  
+  .bar {
+    height: 100%; /* Altura de la barra (100% de la altura del contenedor) */
+    background-color: #007bff; /* Color de la barra (azul en este ejemplo) */
+    color: #fff; /* Color del texto en la barra */
+    text-align: center; /* Alineación del texto en el centro de la barra */
+    line-height: 30px; /* Alineación vertical del texto */
+    border-radius: 5px; /* Bordes redondeados en la barra */
+  }
+  /* Cambiamos el color de fondo del svg y el color de las líneas y etiquetas a blanco */
+.white-bg {
+    background-color: white;
+  }
+  
+  /* Puedes agregar más estilos si es necesario */
+  
