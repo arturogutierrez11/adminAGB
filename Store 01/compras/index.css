@@ -35,9 +35,9 @@
   
   /* Estilo para hacer que el texto de la tabla sea blanco */
   .table {
-    color: rgb(0, 0, 0);
-    background-color: azure;
-
+    color: rgb(255, 255, 255);
+    background-color: #141414;
+    
   }
   
   /* Estilo para hacer que los enlaces dentro de la tabla sean blancos */
@@ -47,32 +47,34 @@
   
 
 /* Estilos responsivos */
-@media (max-width: 640px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .form-container,
-    .table-container {
-        width: 100%;
-        margin-bottom: 7rem;
-      margin-right: 0%;
-      margin-left: 0%;
-     
-    }
-    
-.custom-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-right: 0%;
-      margin-left: 6%;
-}
-.boton-form{
-    margin-left: 32%;
-    margin-bottom: 5%;
-}    
+/* Estilo para hacer que el formulario sea responsive en pantallas pequeñas (teléfonos) */
+@media (max-width: 768px) {
+  /* Ajustar la disposición a una columna */
+  .formulario .fila {
+      flex-direction: column; /* Cambiar la dirección a columna */
+  }
 
+  /* Ajustar el ancho de los campos de entrada para ocupar todo el ancho */
+  .formulario input[type="text"],
+  .formulario input[type="number"],
+  .formulario input[type="date"],
+  .formulario input[type="url"] {
+      width: 100%; /* Hacer que ocupen todo el ancho disponible */
+      margin-right: 0; /* Eliminar margen derecho */
+      margin-bottom: 10px; /* Espacio entre elementos */
+  }
+
+  /* Ajustar el botón en la parte inferior del formulario */
+  .formulario button[type="submit"] {
+      /* Hacer que ocupe todo el ancho disponible */
+      margin: 0; /* Eliminar todos los márgenes */
+      margin-top: 10px; /* Espacio superior para separar el botón del último campo */
+  }
+  .boton-eviar{
+  width: 67vh
+  }
 }
+
 /* Estilos para el formulario */
 .formulario {
     background-color: #000; /* Fondo negro */
@@ -138,9 +140,57 @@
   /* Estilos para el formulario en pantallas pequeñas (teléfonos) */
 /* Estilos para el formulario en pantallas pequeñas (teléfonos) */
 /* Estilos para el formulario en pantallas pequeñas (teléfonos) */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .formulario {
-        width: 100%; /* Ancho completo en pantallas de teléfono */
-        flex-direction: column; /* Mostrar los elementos en columna */
+        width: 100%;
+        flex-direction: column;
     }
+} */
+.texto-verde{
+  color: #028a00;
+}
+.text-rojo{
+  color:#ae0000;
+}
+.formulario select {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  margin-bottom: 10px;
+}
+/* CSS para centrar el botón en pantalla */
+.center-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+/* Estilos base del botón */
+.btn-report {
+  padding: 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+/* Estilos para el botón en pantallas más grandes (tabletas y computadoras) */
+@media (min-width: 768px) {
+  .btn-report {
+      width: 20%; /* Ancho fijo en pantallas más grandes */
+  }
+}
+
+/* Estilos para el botón en pantallas más pequeñas (teléfonos) */
+@media (max-width: 767px) {
+  .btn-report {
+      width: 60%; /* Ancho ajustado para teléfonos */
+      font-size: 14px; /* Tamaño de fuente más pequeño para teléfonos */
+  }
 }

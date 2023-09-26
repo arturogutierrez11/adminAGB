@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-xBuFq2BEjz7R7o5J5f5/5zjBj5F5usxg5f5/c3e5l5v5u5f5g5u5s5f5v5I5F5a5d5w5" crossorigin="anonymous">
+
     <link href="/global.css" rel="stylesheet">
     <link href="/Store 01//compras/index.css" rel="stylesheet">
     <link href="/css globales/navbar.css" rel="stylesheet">
@@ -20,6 +22,7 @@
         <h2>Hua-Hum Store</h2>
     </nav>
     <h1 class="text-center text-3xl text-white mb-5">Registre nuevas compras</h1> 
+   
     <form class="formulario mt-6" id="sheetdb-form" action="https://sheetdb.io/api/v1/mgtcl3kczv654" method="post" id="venta-form">
         <div class="fila">
             <div>
@@ -78,16 +81,29 @@
     
             <div>
                 <label for="estado">Estado:</label>
-                <input type="text" id="estado" name="estado" required>
+                <select id="estado" name="estado" required>
+                    <option value="aceptado">Aceptado</option>
+                    <option value="cancelado">Cancelado</option>
+                </select>
             </div>
         </div>
-    
-        <button type="submit">Agregar Venta</button>
+        <div class="boton-eviar">
+            <button  type="submit">Agregar Compra</button>
+
+        </div>
     </form>
-    
+
     
     
     <h1 class="text-center text-3xl text-white mt-3">Historial de compras</h1> 
+    <div class="center-button-container m-4">
+      
+        <button class="btn btn-report btn-success">
+            <a href="/Store 01/compras/reportes/index.html" target="_blank" rel="noopener noreferrer">  Reporte de gastos e impuestos </a>
+        </button>
+   
+    </div>
+    
     <div class="container-fluid  container">   
         <div class="d-flex justify-content-center table-container"> <!-- Centra la tabla verticalmente -->
             <table class="table bordered table-rounded  rounded-lg ">
@@ -105,8 +121,6 @@
                         <th>tax sale</th>
                         <th>shipping</th>
                         <th>estado</th>
-                        <!-- <th class th-table="p-2">Store</th>
-                        <th class="p-2">BSR</th> -->
                     </tr>
                 </thead>
                 <tbody id="tabla-body">
@@ -164,65 +178,9 @@ form.addEventListener('submit', e => {
 });
 
       </script> -->
-    <script>
-        // Tu código JavaScript para cargar los datos en la tabla va aquí
-        let SHEET_ID = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
-        let SHEET_TITLE = 'compras';
-        let SHEET_RANGE = 'A2:K12';
-        let FULL_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${SHEET_TITLE}&range=${SHEET_RANGE}`;
-    
-        // ... Código previo ...
-
-   // ... Código previo ...
-
-fetch(FULL_URL)
-  .then(res => res.text())
-  .then(rep => {
-    let data = JSON.parse(rep.substr(47).slice(0, -2));
-    console.log(data);
-
-    // Obtener la tabla existente y su cuerpo
-    let tablaBody = document.getElementById('tabla-body');
-
-    // Limpiar la tabla existente eliminando todas las filas
-    while (tablaBody.firstChild) {
-      tablaBody.removeChild(tablaBody.firstChild);
-    }
-
-    // Obtener los datos de la hoja de cálculo
-    let rows = data.table.rows;
-
-    // Iterar a través de los datos y agregar filas a la tabla
-    for (let i = 1; i < data.table.rows.length; i++) {
-        let row = document.createElement('tr');
-        for (let j = 0; j < data.table.cols.length; j++) {
-            let cell = document.createElement('td');
-            let value = data.table.rows[i].c[j].v;
-            
-            if (j === 0) {
-                // Utiliza replace para eliminar la palabra "Date"
-                value = value.replace("Date", "");
-            }
-       
-            // Si quieres que los enlaces sean clicables, descomenta estas líneas
-             if (j === 1 || j=== 5) {
-                 let link = document.createElement('a');
-                 link.href = value;
-                 link.textContent = "enlace";
-                 cell.appendChild(link);
-             } else {
-                cell.textContent = value;
-             }
-            row.appendChild(cell);
-        }
-        tablaBody.appendChild(row);
-    }
-})
-.catch(error => {
-    console.error('Error al obtener los datos:', error);
-});
-
-    </script> 
+   
+        <script defer  src="/Store 01/compras/index.js" ></script>
+   
       <script>
         var form = document.getElementById('sheetdb-form');
     form.addEventListener("submit", e => {

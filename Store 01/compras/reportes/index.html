@@ -1,0 +1,59 @@
+<!-- <link href="/global.css" rel="stylesheet"> -->
+<link href="/Store 01//compras/reportes/index.css" rel="stylesheet">
+<link href="/css globales/navbar.css" rel="stylesheet">
+<link rel="icon" href="/images/Untitled design.png" sizes="36x36" type="image/png">
+
+<title>Reporte de Compras</title>
+<!-- Agrega esto dentro del formulario o donde desees mostrar el filtro de fecha por mes -->
+<div class="filtro-container">
+    <label for="filtro-mes">Filtrar por Mes:</label>
+    <select id="filtro-mes" name="filtro-mes" required>
+        <option value="">Selecciona un mes</option>
+        <option value="01">Enero</option>
+        <option value="02">Febrero</option>
+        <option value="03">Marzo</option>
+        <option value="04">Abril</option>
+        <option value="05">Mayo</option>
+        <option value="06">Junio</option>
+        <option value="07">Julio</option>
+        <option value="08">Agosto</option>
+        <option value="09">Septiembre</option>
+        <option value="10">Octubre</option>
+        <option value="11">Noviembre</option>
+        <option value="12">Diciembre</option>
+    </select>
+    <button id="btn-filtrar" class="btn btn-success">Filtrar</button>
+</div>
+
+  
+  
+
+
+
+<div class="report-container m-3">
+    <h2>Reporte de Compras e Impuestos</h2>
+    <table class="table bordered table-rounded rounded-lg">
+        <thead>
+            <tr class="bg-black text-white" >
+              
+                <th>fecha</th>
+               
+                <th>asin</th>
+                <th>N° de orden</th>
+                <th>costo</th>
+                <th>tax sale</th>
+                <th>shipping</th>
+            
+            </tr>
+        </thead>
+        <tbody id="tabla-body">
+            <!-- Aquí se cargarán los datos de la hoja de cálculo usando JavaScript -->
+        </tbody>
+    </table>
+    <div class="sum-container">
+        <p>Total de Costo: <span id="total-cost">$0.00</span></p>
+        <p>Total de Tax Sale: <span id="total-tax-sale">$0.00</span></p>
+        <p>Total de Shipping: <span id="total-shipping">$0.00</span></p>
+    </div>
+</div>
+    <script defer  src="/Store 01/compras/reportes/index.js" ></script>

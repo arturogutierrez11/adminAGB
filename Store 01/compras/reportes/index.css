@@ -1,0 +1,106 @@
+/* styles.css */
+
+body {
+    background-color: #222;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+.report-container {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+.table th {
+    background-color: #222;
+}
+
+.sum-container {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #444;
+}
+
+.sum-container p {
+    margin: 0;
+    font-size: 16px;
+}
+
+#total-cost, #total-tax-sale, #total-shipping {
+    font-weight: bold;
+    color: #FFD700; /* Color dorado para resaltar los totales */
+}
+/* styles.css */
+
+/* Estilos para el filtro por mes y el botón */
+.filtro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #000; /* Fondo negro */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px;
+}
+
+#filtro-mes {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 200px;
+}
+
+label[for="filtro-mes"] {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block; /* Mostrar en una línea separada */
+    color: #fff;
+}
+
+#btn-filtrar {
+    padding: 10px 15px;
+    background-color: #007bff; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición al pasar el mouse */
+    flex-shrink: 0; /* Evita que el botón se reduzca en tamaños pequeños */
+}
+
+/* Estilos para el botón al pasar el mouse */
+#btn-filtrar:hover {
+    background-color: #0056b3; /* Color de fondo del botón al pasar el mouse */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .filtro-container {
+        padding: 10px; /* Espaciado interno en tamaños pequeños */
+    }
+
+    #filtro-mes {
+        width: 100%;
+        max-width: none;
+    }
+}
+
