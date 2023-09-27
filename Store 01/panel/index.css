@@ -1,0 +1,48 @@
+/* Estilo futurista personalizado para el contenedor */
+.futuristic-container {
+    background-color: #121212;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    text-align: center;
+    font-size: 18px;
+}
+
+/* Estilo futurista para las tarjetas de enlace */
+.futuristic-card {
+    background-color: #fff;
+    color: #121212;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+   /* Estilos para la imagen dentro de .futuristic-card */
+  .futuristic-card img {
+    margin-bottom: 10px; /* Espacio inferior entre la imagen y el título */
+  }
+  
+
+/* Estilo para el título de las tarjetas */
+.futuristic-card h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Estilo para el texto de las tarjetas */
+.futuristic-card p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Efecto de escala al pasar el mouse sobre las tarjetas */
+.futuristic-card:hover {
+    transform: scale(1.05);
+}
