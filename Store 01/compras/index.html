@@ -6,198 +6,134 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-xBuFq2BEjz7R7o5J5f5/5zjBj5F5usxg5f5/c3e5l5v5u5f5g5u5s5f5v5I5F5a5d5w5" crossorigin="anonymous">
-
     <link href="/global.css" rel="stylesheet">
     <link href="/Store 01//compras/index.css" rel="stylesheet">
     <link href="/css globales/navbar.css" rel="stylesheet">
     <link rel="icon" href="/images/Untitled design.png" sizes="36x36" type="image/png">
-
     <title>Compras</title>
 </head>
 <body>
-    <nav class="navbar-custom mb-4">
-        <a class="navbar-brand" href="/Store 01/PanelStore01.html">
-            <img src="/images/logohh.jpeg" alt="Logo HUA-HUM">
-        </a>
-        <h2>Hua-Hum Store</h2>
-    </nav>
-    <h1 class="text-center text-3xl text-white mb-5">Registre nuevas compras</h1> 
-   
-    <form class="formulario mt-6" id="sheetdb-form" action="https://sheetdb.io/api/v1/mgtcl3kczv654" method="post" id="venta-form">
-        <div class="fila">
-            <div>
-                <label for="fecha">Fecha:</label>
-                <input type="date" id="fecha" name="fecha" required>
+        <nav class="navbar-custom mb-4">
+            <a class="navbar-brand" href="/Store 01/PanelStore01.html">
+                <img src="/images/logohh.jpeg" alt="Logo HUA-HUM">
+            </a>
+            <h2>Hua-Hum Store</h2>
+        </nav>
+        <h1 class="text-center text-3xl text-white mb-5">Registre nuevas compras</h1>  
+        <form class="formulario mt-6" id="sheetdb-form" action="https://sheetdb.io/api/v1/mgtcl3kczv654" method="post" id="venta-form">
+            <div class="fila">
+                <div>
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+        
+                <div>
+                    <label for="linkAmazon">Link de Amazon:</label>
+                    <input type="url" id="linkAmazon" name="linkAmazon" required>
+                </div>
+        
+                <div>
+                    <label for="asin">ASIN:</label>
+                    <input type="text" id="asin" name="asin" required>
+                </div>
+        
+                <div>
+                    <label for="size">Tamaño:</label>
+                    <input type="text" id="size" name="size" required>
+                </div>
             </div>
-    
-            <div>
-                <label for="linkAmazon">Link de Amazon:</label>
-                <input type="url" id="linkAmazon" name="linkAmazon" required>
+        
+            <div class="fila">
+                <div>
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" required>
+                </div>
+        
+                <div>
+                    <label for="store">Tienda:</label>
+                    <input type="text" id="store" name="store" required>
+                </div>
+        
+                <div>
+                    <label for="numeroOrden">Número de Orden:</label>
+                    <input type="text" id="numeroOrden" name="numeroOrden" required>
+                </div>
+        
+                <div>
+                    <label for="total">Total:</label>
+                    <input type="number" id="total" name="total" step="0.01" required>
+                </div>
             </div>
-    
-            <div>
-                <label for="asin">ASIN:</label>
-                <input type="text" id="asin" name="asin" required>
+        
+            <div class="fila">
+                <div>
+                    <label for="taxSale">Tax Sale:</label>
+                    <input type="number" id="taxSale" name="taxSale" step="0.01" required>
+                </div>
+        
+                <div>
+                    <label for="shipping3PL">Shipping 3PL:</label>
+                    <input type="number" id="shipping3PL" name="shipping3PL" step="0.01" required>
+                </div>
+        
+                <div>
+                    <label for="estado">Estado:</label>
+                    <select id="estado" name="estado" required>
+                        <option value="entregado">entregado</option>
+                        <option value="cancelado">cancelado</option>
+                    </select>
+                </div>
             </div>
-    
-            <div>
-                <label for="size">Tamaño:</label>
-                <input type="text" id="size" name="size" required>
+            <div class="boton-eviar">
+                <button  type="submit">Agregar Compra</button>
+
+            </div>
+        </form> 
+        <h1 class="text-center text-3xl text-white mt-3">Historial de compras</h1> 
+        <div class="center-button-container m-4">
+            <button class="btn btn-report btn-success">
+                <a href="/Store 01/compras/reportes/index.html" target="_blank" rel="noopener noreferrer">  Reporte de gastos e impuestos </a>
+            </button>
+        </div>
+        <div class="container-fluid  container">   
+            <div class="d-flex justify-content-center table-container">
+                <table class="table bordered table-rounded  rounded-lg ">
+                    <thead>
+                        <tr class="bg-black text-white" > 
+                            <th>fecha</th>
+                            <th>Link</th>
+                            <th>asin</th>
+                            <th>size</th>
+                            <th>cantidad</th>
+                            <th>store</th>
+                            <th>N° de orden</th>
+                            <th>costo</th>
+                            <th>tax sale</th>
+                            <th>shipping</th>
+                            <th>estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-body">
+                    </tbody>
+                </table>
             </div>
         </div>
-    
-        <div class="fila">
-            <div>
-                <label for="cantidad">Cantidad:</label>
-                <input type="number" id="cantidad" name="cantidad" required>
-            </div>
-    
-            <div>
-                <label for="store">Tienda:</label>
-                <input type="text" id="store" name="store" required>
-            </div>
-    
-            <div>
-                <label for="numeroOrden">Número de Orden:</label>
-                <input type="text" id="numeroOrden" name="numeroOrden" required>
-            </div>
-    
-            <div>
-                <label for="total">Total:</label>
-                <input type="number" id="total" name="total" step="0.01" required>
-            </div>
-        </div>
-    
-        <div class="fila">
-            <div>
-                <label for="taxSale">Tax Sale:</label>
-                <input type="number" id="taxSale" name="taxSale" step="0.01" required>
-            </div>
-    
-            <div>
-                <label for="shipping3PL">Shipping 3PL:</label>
-                <input type="number" id="shipping3PL" name="shipping3PL" step="0.01" required>
-            </div>
-    
-            <div>
-                <label for="estado">Estado:</label>
-                <select id="estado" name="estado" required>
-                    <option value="entregado">entregado</option>
-                    <option value="cancelado">cancelado</option>
-                </select>
-            </div>
-        </div>
-        <div class="boton-eviar">
-            <button  type="submit">Agregar Compra</button>
+    <script defer  src="/Store 01/compras/index.js" ></script>
+    <script>
+            var form = document.getElementById('sheetdb-form');
+        form.addEventListener("submit", e => {
+        e.preventDefault();
+        fetch(form.action, {
+            method : "POST",
+            body: new FormData(document.getElementById("sheetdb-form")),
+        }).then(
+            response => response.json()
+        ).then((html) => {
+            // you can put any JS code here
+        alert('compra registrada exitosamente');
 
-        </div>
-    </form>
-
-    
-    
-    <h1 class="text-center text-3xl text-white mt-3">Historial de compras</h1> 
-    <div class="center-button-container m-4">
-      
-        <button class="btn btn-report btn-success">
-            <a href="/Store 01/compras/reportes/index.html" target="_blank" rel="noopener noreferrer">  Reporte de gastos e impuestos </a>
-        </button>
-   
-    </div>
-    
-    <div class="container-fluid  container">   
-        <div class="d-flex justify-content-center table-container"> <!-- Centra la tabla verticalmente -->
-            <table class="table bordered table-rounded  rounded-lg ">
-                <thead>
-                    <tr class="bg-black text-white" >
-                      
-                        <th>fecha</th>
-                        <th>Link</th>
-                        <th>asin</th>
-                        <th>size</th>
-                        <th>cantidad</th>
-                        <th>store</th>
-                        <th>N° de orden</th>
-                        <th>costo</th>
-                        <th>tax sale</th>
-                        <th>shipping</th>
-                        <th>estado</th>
-                    </tr>
-                </thead>
-                <tbody id="tabla-body">
-                    <!-- Aquí se cargarán los datos de la hoja de cálculo usando JavaScript -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <!-- <script>
-     const scriptURL = 'https://script.google.com/macros/s/AKfycbzyons6EedcIxG3j70BK6BCiP-MdZFcuivx2J58lvxWGscTvkebm3xKwVEobZwAcHOL/exec';
-const form = document.forms['contact-us'];
-
-form.addEventListener('submit', e => {
-  e.preventDefault();
-
-  // Obtener los valores de los campos del formulario
-  const fecha = form.elements['fecha'].value;
-  const linkAmazon = form.elements['link_amazon'].value;
-  const asin = form.elements['asin'].value;
-  const size = form.elements['size'].value;
-  const cantidad = form.elements['cantidad'].value;
-  const store = form.elements['store'].value;
-  const numeroDeOrden = form.elements['numero_de_orden'].value;
-  const total = form.elements['total'].value;
-  const taxSale = form.elements['tax_sale'].value;
-  const shipping3PL = form.elements['shipping_3PL'].value;
-  const estado = form.elements['estado'].value;
-
-  // Crear un objeto FormData y agregar los datos
-  const formData = new FormData();
-  formData.append('fecha', fecha);
-  formData.append('link_amazon', linkAmazon);
-  formData.append('asin', asin);
-  formData.append('size', size);
-  formData.append('cantidad', cantidad);
-  formData.append('store', store);
-  formData.append('numero_de_orden', numeroDeOrden);
-  formData.append('total', total);
-  formData.append('tax_sale', taxSale);
-  formData.append('shipping_3PL', shipping3PL);
-  formData.append('estado', estado);
-
-  // Enviar la solicitud utilizando fetch
-  fetch(scriptURL, { method: 'POST', body: formData })
-      .then(response => {
-          if (response.ok) {
-              console.log('Éxito al agregar los datos:', response);
-          } else {
-              throw new Error('Error al agregar los datos');
-          }
-      })
-      .catch(error => {
-          console.error('Error:', error);
-      });
-});
-
-      </script> -->
-   
-        <script defer  src="/Store 01/compras/index.js" ></script>
-   
-      <script>
-        var form = document.getElementById('sheetdb-form');
-    form.addEventListener("submit", e => {
-      e.preventDefault();
-      fetch(form.action, {
-          method : "POST",
-          body: new FormData(document.getElementById("sheetdb-form")),
-      }).then(
-          response => response.json()
-      ).then((html) => {
-        // you can put any JS code here
-       alert('compra registrada exitosamente');
-
-      });
-    });
+        });
+        });
     </script>
-    
-
 </body>
 </html>
