@@ -8,15 +8,38 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="/global.css" rel="stylesheet">
     <link rel="icon" href="/images/Untitled design.png" sizes="36x36" type="image/png">
-
     <link href="/css globales/navbar.css" rel="stylesheet">
     <link href="/Store 01/Segunda Instancia/index.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="ruta/a/fontawesome-all.min.css">
+  <style>
+   .iframe-container {
+    display: flex;
+    justify-content: center;
+ 
+    position: relative;
+    justify-content: center;
+    text-align: center; /* Center the iframe horizontally */
+    padding-top: 56.25%;
+    height: 100vh; /* Ensure full viewport height */
+    margin: 0; /* Remove default body margin */
+ 
+}
+
+/* Styles for the iframe */
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    border: none;
+}
+  </style>
 </head>
 <body class="xx">
     <nav class="navbar-custom">
-        <a class="navbar-brand" href="/Store 01/PanelStore01.html">
+        <a class="navbar-brand" href="/Store 01/panel/index.html">
             <img src="/images/logohh.jpeg" alt="Logo HUA-HUM">
         </a>
         <h2>Hua-Hum Store</h2>
@@ -32,19 +55,22 @@
                 <option value="pendiente">Pendientes</option>
             </select>
         </div>
-        <div class="flex-grow"></div> <!-- Espacio flexible para centrar el botón -->
+        <div class="flex-grow"></div>
         <div class="flex flex-col items-center">
             <label for="asinFilter" class="text-white mb-2">Filtrar por ASIN</label>
             <input type="text" id="asinFilter" class="px-3 py-2 rounded border bg-white text-gray-800 focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-400">
             <button id="searchButton" class="bg-blue-700 text-white mt-2 mb-2 py-1 px-2 rounded w-20 hover:bg-blue-600 transition duration-300">Buscar</button>
         </div>
     </div>
-    
     <div class="container mt-4">
-        <div class="row" id="card-container">
-         
+        <div class="row" id="card-container">     
         </div>
     </div>
+    
+    <div class="iframe-container">
+        <iframe src="https://docs.google.com/spreadsheets/d/12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY/edit#gid=1656452333&amp;headers=true" frameborder="0" allowfullscreen></iframe>
+      </div>
+
 <script>
    // Add event listener to the filter select
 document.getElementById('statusFilter').addEventListener('change', filterCards);
@@ -73,14 +99,13 @@ filterCards();
 
 
 </script>
-    
-    <script>
+<script>
         // Tu código JavaScript para cargar los datos en las tarjetas va aquí
         let SHEET_ID = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
         let SHEET_TITLE = 'aceptados';
         let SHEET_RANGE = 'A2:S17';
         let FULL_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${SHEET_TITLE}&range=${SHEET_RANGE}`;
-
+       
         fetch(FULL_URL)
             .then(res => res.text())
             .then(rep => {
@@ -104,19 +129,24 @@ filterCards();
                   
                     let cardTitleId = `cardTitle-${i}`;
                     let isAccepted = productData[5].v === 'aceptado';
+                   
                     // Crear el contenido de la tarjeta (utiliza las clases de Bootstrap para dar estilo)
                     card.innerHTML = `
                     <div class="card border-dark rounded" style="width: 18rem;">
+                      
             <img src=${productData[4].v} class="card-img-top" alt="Imagen del producto">
             <div class="card-body  text-center">
                 <h5 class="card-title" id="${cardTitleId}">
                     ${productData[6].v}
                 </h5>
+                
+          
+            <button class="show-more-button">Show More</button>
                 <button class="copy-button" data-title-id="${cardTitleId}"><i class="fas fa-copy"></i> copy</button>
                 <p class="card-description">ASIN N°  ${productData[3].v}</p>
                 <a href="${productData[2].v}" target="_blank" class="btn btn-primary card-button">Go to Amazon Product</a>
                 <p class="card-description brand">${productData[1].v}</p>
-                <p class="card-description status-color">${isAccepted ? 'Status: aceptado' : 'Status: ' + productData[5].v}</p>
+                <p class="card-description status-color"> status:${productData[5].v}</p>
                 <p class="card-description">Category: ${productData[7].v}</p>
                 <p class="card-description">size ${productData[8].v}</p>
                 <p class="card-description">Costo ${productData[9].v}us</p>
@@ -149,7 +179,9 @@ filterCards();
             .catch(error => {
                 console.error('Error al obtener los datos:', error);
             });
-    </script>
+</script>
+
 </body>
 </html>
 
+s
