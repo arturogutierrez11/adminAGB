@@ -3,20 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />    <title>Primera instancia</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="/global.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="/images/Untitled design.png" sizes="36x36" type="image/png">
-
-    <link href="/css globales/navbar.css" rel="stylesheet">
-    <link href="/Store 01/primerainstancia.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
    
+    <link rel="icon" href="/images/Untitled design.png" sizes="36x36" type="image/png">
+    <link href="/css globales/navbar.css" rel="stylesheet">
+    <link href="/Store 01/primerainstancia.css" rel="stylesheet"> 
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/> -->
+  
+    <style>
+        .centered-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ajusta la altura según tus necesidades */
+            position: relative; /* Agregamos posición relativa para el div contenedor */
+        }
+
+        /* Estilos para el botón */
+        .futuristic-button {
+            background-color: #0077ff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 1px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            position: absolute; /* Posición absoluta para que quede arriba */
+            top: 20px; /* Ajusta la distancia desde la parte superior según tus necesidades */
+        }
+
+        /* Estilos para el iframe */
+        .iframe-container {
+            overflow: hidden;
+            display: none; 
+            margin: 5rem;/* Oculta el iframe por defecto */
+        }
+
+        .iframe-container iframe {
+            width: 300px; /* Cambia el ancho del iframe según tus preferencias */
+            height: 600px; /* Cambia la altura del iframe según tus preferencias */
+            border: 1px solid #ccc;
+            margin-top: 20rem; /* Añade un borde al iframe si lo deseas */
+        }
+
+        /* Estilos para mostrar el iframe cuando se hace clic en el botón */
+        .show-iframe .iframe-container {
+            display: block; /* Muestra el iframe cuando tiene la clase .show-iframe */
+        }
+    </style>
 </head>
 <body class="xx">
     <nav class="navbar-custom">
-        <a class="navbar-brand" href="/Store 01/PanelStore01.html">
+        <a class="navbar-brand" href="/Store 01/panel/index.html">
             <img src="/images/logohh.jpeg" alt="Logo HUA-HUM">
         </a>
         <h2>Hua-Hum Store</h2>
@@ -35,10 +77,14 @@
                     <label for="brand" class="block text-white text-sm font-medium mb-2">Brand</label>
                     <input type="text" id="brand" name="brand" class="w-full px-4 py-2 rounded-lg  border border-gray-600 focus:outline-none focus:border-blue-400" required>
                 </div>
-                <div class="mb-4">
-                    <label for="bsr" class="block text-white text-sm font-medium mb-2">BSR #</label>
-                    <input type="number" id="bsr" name="bsr" class="w-full px-4 py-2 rounded-lg  border border-gray-600 focus:outline-none focus:border-blue-400" required>
-                </div>
+                <!-- <div class="mb-4">
+                    <label for="status" class="block text-white text-sm font-medium mb-2">Estado</label>
+                    <select id="status" name="status" class="w-full px-4 py-2 rounded-lg  border border-gray-600 focus:outline-none focus:border-blue-400" required>
+                        <option value="rechazado">rechazado</option>
+                        <option value="aceptado">aceptado</option>
+                        <option value="pendiente">pendiente</option>
+                    </select>
+                </div> -->
                 <div class="mb-4">
                     <label for="category" class="block text-white text-sm font-medium mb-2">Prioridad</label>
                     <select id="category" name="prioridad" class="w-full px-4 py-2 rounded-lg  border border-gray-600 focus:outline-none focus:border-blue-400" required>
@@ -53,35 +99,48 @@
                 </div>
                 
             </form>
-
-      
-   
-               
-              
-          
         </div>
         <div class="flex flex-col items-center mt-4">
             <label for="asinFilter" class="text-white mb-2">Filtrar por Asin</label>
             <input type="text" id="asinFilter" class="px-3 py-2 rounded border bg-white text-gray-800 focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-400">
             <button class="bg-blue-700 text-white mt-2 mb-2 py-1 px-2 rounded w-20 hover:bg-blue-600 transition duration-300">Buscar</button>
-    
-        </div> 
-        <div class="table-container rounded-md">
-            <table class="custom-table ">
-                <thead>
-                    <tr>
-                        <th class="p-1">Fecha</th>
-                        <th class="p-1">Mail</th>
-                        <th class="p-1">URL</th>
-                        <th class="p-1">ASIN</th>
-                    </tr>
-                </thead>
-                <tbody id="tabla-body">
-                    <!-- Aquí se cargarán los datos de la hoja de cálculo usando JavaScript -->
-                </tbody>
-            </table>
         </div>
+        <div class="centered-container">
+            <button id="toggleButton" class="futuristic-button">Mostrar/Ocultar</button>
+            <div id="iframeContainer" class="iframe-container" style="display: none;">
+                <!-- Contenido del iframe -->
+                <iframe src="https://docs.google.com/spreadsheets/d/12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY/edit#gid=0" frameborder="0"></iframe>
+            </div>
+            <table class="custom-table">
+                <!-- Contenido de la tabla -->
+                <thead>
+                    <th class="p-1">Fecha</th>
+                    <th class="p-1">Mail</th>
+                    <th class="p-1">URL</th>
+                    <th class="p-0">ASIN</th>
+                    <th class="p-0">status</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-body">
+                <!-- Aquí se cargarán los datos de la hoja de cálculo usando JavaScript -->
+            </tbody>
+        </table>
     </div>
+        <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var toggleButton = document.getElementById("toggleButton");
+        var iframeContainer = document.getElementById("iframeContainer");
+
+        toggleButton.addEventListener("click", function () {
+            if (iframeContainer.style.display === "none" || iframeContainer.style.display === "") {
+                iframeContainer.style.display = "block";
+            } else {
+                iframeContainer.style.display = "none";
+            }
+        });
+    });
+
+        </script>
 </body>
 </html>
 <script>
@@ -105,27 +164,29 @@ formData.append('asin_url', urlWithAsin);
      // Usar la URL con el valor de ASIN
     formData.append('brand', form.elements['brand'].value);
     formData.append('prioridad', form.elements['prioridad'].value);
-    formData.append('bsr', form.elements['bsr'].value);
+    // formData.append('status', form.elements['status'].value);
     // Agregar más campos según sea necesario
 
     // Enviar la solicitud utilizando fetch
     fetch(scriptURL, { method: 'POST', body: formData })
         .then(response => console.log('Éxito!', response))
-        .catch(error => console.error('Error!', error.message));
+        .then(alert('asin guradado correctmente'))
+        //.catch(error => console.error('Error!', error.message));
 });
 </script>
+
 <script>
  // Tu código JavaScript para cargar los datos en la tabla va aquí
  let SHEET_ID = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
     let SHEET_TITLE = 'Sheet1';
-    let SHEET_RANGE = 'A2:D10';
+    let SHEET_RANGE = 'A2:E20';
     let FULL_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${SHEET_TITLE}&range=${SHEET_RANGE}`;
 
     fetch(FULL_URL)
 .then(res => res.text())
 .then(rep => {
     let data = JSON.parse(rep.substr(47).slice(0,-2));
-    console.log(data)
+   // console.log(data)
 
     // Obtener la tabla existente y su cuerpo
     let tablaBody = document.getElementById('tabla-body');
@@ -136,7 +197,7 @@ formData.append('asin_url', urlWithAsin);
     }
 
     // Iterar a través de los nuevos datos y agregar filas a la tabla
-    for (let i = 1; i < data.table.rows.length; i++) {
+    for (let i = 0; i < data.table.rows.length; i++) {
         let row = document.createElement('tr');
         for (let j = 0; j < data.table.cols.length; j++) {
             let cell = document.createElement('td');
@@ -157,7 +218,7 @@ formData.append('asin_url', urlWithAsin);
     }
 })
 .catch(error => {
-    console.error('Error al obtener los datos:', error);
+    // console.error('Error al obtener los datos:', error);
 });
 
 
@@ -183,4 +244,61 @@ formData.append('asin_url', urlWithAsin);
     });
 
 
+</script>
+
+<!-- <script>
+    // let SHEET_ID1 = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
+    // let SHEET_TITLE1 = 'Sheet1';
+    // let SHEET_RANGE1 = 'A2:D10';
+    // const query = encodeURIComponent('Select A,B,C where C > 3 limit 20');
+    // let FULL_URL1 = `https://docs.google.com/spreadsheets/d/${SHEET_ID1}/gviz/tq?sheet=${SHEET_TITLE1}&range=${SHEET_RANGE1}`;
+
+    // const urlSheet = "https://docs.google.com/spreadsheets/d/12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY/edit?usp=sharing"
+
+    const base = "https://docs.google.com/spreadsheets/d/12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY/gviz/tq?";
+const query = encodeURIComponent('SELECT A, B, C  LIMIT 20');
+const url = base + 'tq=' + query;
+
+fetch(url)
+  .then(res => res.text())
+  .then(rep => {
+    // El resultado es una respuesta de Google Visualization API en formato JSONP.
+    // Debes eliminar los caracteres iniciales y finales para obtener el JSON válido.
+    const jsonString = rep.substring(47, rep.length - 2);
+    const data = JSON.parse(jsonString);
+    console.log(data);
+  })
+  .catch(error => {
+    console.error('Error al obtener datos de la hoja de cálculo:', error);
+  });
+
+     
+</script> -->
+<script>
+
+    // const base = 'https://docs.google.com/spreadsheets/d/16G6N3G4oa_w1BTPZdZuGLJXOEI2cnXSjWb3iJ5xRBw4/gviz/tq?';
+// const output = document.querySelector('.output');
+// const query = encodeURIComponent('Select A,B,C where C > 3 limit 20');
+// const url = base + '&tq=' + query;
+//     fetch(url)
+//     .then(res => res.text())
+//     .then(rep =>{
+    //         const data = JSON.parse(rep.substr(47).slice(0,-2));
+//         const row = document.createElement('tr');
+//         output.append(row);
+//         data.table.cols.forEach((heading)=>{
+    //             const cell = document.createElement('td');
+//             cell.textContent = heading.label;
+//             row.append(cell);
+//         })
+//         data.table.rows.forEach((main)=>{
+    //             const container = document.createElement('tr');
+//             output.append(container);
+//             main.c.forEach((ele)=>{
+    //                 const cell = document.createElement('td');
+//                 cell.textContent = ele.v;
+//                 container.append(cell);
+//             })
+//         })
+//     })
 </script>

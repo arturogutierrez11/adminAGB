@@ -1,55 +1,47 @@
-  /* Estilos del contenedor principal */
-  .container {
+/* Estilos del contenedor principal */
+.container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
-  
 }
 
 /* Estilos del formulario */
 .form-container {
     max-width: 100%;
     width: 360px;
-   ; /* Espacio entre el formulario y la tabla */
+    margin-right: 2%; /* Espacio entre el formulario y la tabla */
+}
+
+.boton-form {
+    margin-top: 2%;
 }
 
 /* Estilos de la tabla */
-.table-container {
-    max-width: 94%;
-    width: 100%;
-    overflow-x: auto;
+.custom-table{
+margin-top: 0%;
 }
 
-.boton-form{
-  margin-top: 2%;
-}    
-.custom-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-left: 6rem;
-    margin-top: 1rem; /* Espacio entre el formulario y la tabla */
-}
 
 .custom-table th,
 .custom-table td {
-    border: 1px solid #e2e8f0;
+   
     padding: 0.5rem;
     text-align: left;
 }
 
 .custom-table th {
-    background-color: #1a202c;
+    background-color: #000000;
     color: #fff;
 }
 
-.custom-table tr:nth-child(even) {
-    background-color: #f7fafc;
+ .custom-table tr:nth-child(even) {
+   color: #fff;
 }
 
 .custom-table tr:nth-child(odd) {
-    background-color: #edf2f7;
-}
+   color: #fff;
+} 
 
 /* Estilos responsivos */
 @media (max-width: 640px) {
@@ -57,27 +49,25 @@
         flex-direction: column;
         align-items: center;
     }
-    .form-container,
-    .table-container {
-        width: 100%;
-        margin-bottom: 7rem;
-      margin-right: 0%;
-      margin-left: 0%;
-     
-    }
-    
-.custom-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-right: 0%;
-      margin-left: 6%;
-}
-.boton-form{
-    margin-left: 32%;
-    margin-bottom: 5%;
-}    
 
+    .form-container,
+    .custom-table {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .custom-table {
+        margin-left: 0; /* Elimina el espacio a la izquierda de la tabla en dispositivos pequeños */
+    }
+
+    .boton-form {
+        margin-left: 0; /* Elimina el margen izquierdo del botón en dispositivos pequeños */
+        margin-top: 5%; /* Añade margen superior al botón en dispositivos pequeños */
+    }
 }
-.xx{
-background-color: #141414;
+
+
+/* Estilo para un elemento con clase "xx" */
+.xx {
+    background-color: #141414;
 }
