@@ -115,7 +115,7 @@
                 <!-- Contenido de la tabla -->
                 <thead>
                     <th class="p-1">Fecha</th>
-                    <th class="p-1">Mail</th>
+                    <th class="p-1">Brand</th>
                     <th class="p-1">URL</th>
                     <th class="p-0">ASIN</th>
                     <th class="p-0">status</th>
@@ -186,7 +186,7 @@ formData.append('asin_url', urlWithAsin);
 .then(res => res.text())
 .then(rep => {
     let data = JSON.parse(rep.substr(47).slice(0,-2));
-   // console.log(data)
+   console.log(data)
 
     // Obtener la tabla existente y su cuerpo
     let tablaBody = document.getElementById('tabla-body');

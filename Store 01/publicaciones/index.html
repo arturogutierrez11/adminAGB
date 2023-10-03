@@ -17,7 +17,7 @@
   </head>
 <body class="xx">
     <nav class="navbar-custom">
-      <a class="navbar-brand" href="/Store 01/PanelStore01.html">
+      <a class="navbar-brand" href="/Store 01/panel/index.html">
           <img src="/images/logohh.jpeg" alt="Logo HUA-HUM">
       </a>
       <h2>Hua-Hum Store</h2>
@@ -25,7 +25,7 @@
     <div class="container-fluid mt-4">
         <h1 class="text-center text-3xl text-white mb-3">Publicaciones Activas</h1>
         <div class="d-flex justify-content-center x-table"> <!-- Centra la tabla verticalmente -->
-            <table class="table table-bordered table-rounded rounded-lg">
+            <!-- <table class="table table-bordered table-rounded rounded-lg">
                 <thead >
                     <tr class="bg-black w-96 p-4  shadow-lg" >
                         <th class="p-2">Sku</th>
@@ -34,17 +34,19 @@
                         <th class="p-2">stock</th>
                         <th class="p-2">precio</th>
                         <th class="p-2">Url Amazon</th>
-                        <!-- <th class="p-2">Store</th>
-                        <th class="p-2">BSR</th> -->
+                     
                     </tr>
                 </thead>
                 <tbody id="tabla-body">
-                    <!-- Aquí se cargarán los datos de la hoja de cálculo usando JavaScript -->
+                  
                 </tbody>
-            </table>
-        </div>
+            </table> -->
+            <div style="overflow: auto; width: 100%; padding-top: 56.25%; position: relative;">
+                <iframe src="https://docs.google.com/spreadsheets/d/12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY/edit#gid=1846225692" frameborder="0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+            </div>
+                    </div>
     </div>
-    <script>
+    <!-- <script>
         // Tu código JavaScript para cargar los datos en la tabla va aquí
         let SHEET_ID = '1AEbeU_vzUOPWdzCluQyRfzcktuxix84t';
         let SHEET_TITLE = 'listings';
@@ -90,6 +92,6 @@
         console.error('Error al obtener los datos:', error);
     });
 
-    </script>
+    </script> -->
 </body>
 </html>

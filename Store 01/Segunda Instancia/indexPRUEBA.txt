@@ -154,3 +154,19 @@ document.getElementById('brandFilter').addEventListener('input', function () {
 
 >
 </script> -->
+
+
+
+ <p class="card-description status-color"> status:${productData[5].v}</p>
+                <p class="card-description">Category: ${productData[7].v}</p>
+                <p class="card-description">size ${productData[8].v}</p>
+                <p class="card-description">Costo ${productData[9].v}us</p>
+                <p class="card-description">Precio de venta: ${productData[10].v} us</p>
+                <p class="card-description">Sellers: ${productData[12].v}</p>
+                <p class="card-description">Tarifa Amazon: ${productData[13].v} us</p>
+                <p class="card-description">Envio Comprador: ${productData[14].v} us</p>
+                <p class="card-description"> Costo /m almacen. ${productData[15].v} us</p>
+                <p class="card-description">Envio al deposito ${productData[16].v} us</p>
+                <p class="card-description">Tax sale Miami ${productData[17].v} us</p>
+                <p class="card-description">Margen NETO: ${productData[18].v} us</p>
+                <button id="copyIcon"><i class="fas fa-copy"></i></button>

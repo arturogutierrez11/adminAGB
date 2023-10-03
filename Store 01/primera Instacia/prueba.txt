@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,4 +34,4 @@
     <div id="bot" onclick="mostrarSeleccion()">Mostrar selección</div><br />
     <iframe id="fr" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRJb-Lc-dkO-hk6JK7NzOV8vZliPdYO2WBuT_tstzlIIdDmg7F7c1qqqAvWCcLyxvQB4OahKwqoc3Ql/pubhtml?gid=0&single=true" width="500" height="500"></iframe>
 </body>
-</html>
+</html> -->
