@@ -76,6 +76,11 @@
             <input type="text" id="asinFilter" class="px-3 py-2 rounded border bg-white text-gray-800 focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-400">
             <button id="searchButton" class="bg-blue-700 text-white mt-2 mb-2 py-1 px-2 rounded w-20 hover:bg-blue-600 transition duration-300">Buscar</button>
         </div>
+        <label for="brandFilter" class="text-white mb-2">Filtrar por Marca</label>
+        <select id="brandFilter" class="px-3 py-2 rounded border bg-white text-gray-800 focus:outline-none focus:ring focus:border-blue-300">
+            <option value="">Todas las Marcas</option>
+        </select>
+        
     </div>
     <div class="centered-container">
         <button id="toggleButton" class="futuristic-button">Mostrar/Ocultar</button>
@@ -185,3 +190,51 @@ fetch(FULL_URL)
 </body>
 </html>
 
+<script>
+    // JavaScript code to filter and create cards for products with "Pendiente" status and selected brand
+document.addEventListener("DOMContentLoaded", function () {
+    // ... (Your existing code)
+
+    // Get a reference to the brand filter select element
+    var brandFilterSelect = document.getElementById("brandFilter");
+
+    // Function to update the displayed cards based on the selected brand
+    function updateFilteredCards() {
+        // Get the selected brand from the dropdown
+        var selectedBrand = brandFilterSelect.value.toLowerCase();
+
+        // Iterate through the data and create cards for products with "Pendiente" status and the selected brand
+        for (let i = 0; i < data.table.rows.length; i++) {
+            let productData = data.table.rows[i].c;
+
+            if (productData[5].v.toLowerCase() === 'pendiente' && (selectedBrand === '' || productData[1].v.toLowerCase() === selectedBrand)) {
+                // ... (Your existing card creation code)
+            }
+        }
+    }
+
+    // Populate the brand filter options based on available brands in the data
+    var brandsSet = new Set();
+    for (let i = 0; i < data.table.rows.length; i++) {
+        let productData = data.table.rows[i].c;
+        brandsSet.add(productData[1].v);
+    }
+
+    // Convert the set to an array and sort it
+    var brandsArray = Array.from(brandsSet).sort();
+
+    // Add the brand options to the dropdown
+    var brandFilterOptions = '<option value="">Todas las Marcas</option>';
+    for (var brand of brandsArray) {
+        brandFilterOptions += `<option value="${brand.toLowerCase()}">${brand}</option>`;
+    }
+    brandFilterSelect.innerHTML = brandFilterOptions;
+
+    // Listen for changes in the brand filter dropdown and update the displayed cards
+    brandFilterSelect.addEventListener("change", updateFilteredCards);
+
+    // Initially, update the cards based on the default selection (All Brands)
+    updateFilteredCards();
+});
+
+</script>
