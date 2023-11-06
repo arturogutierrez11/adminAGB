@@ -59,7 +59,8 @@ color: #fff;
         }
         tbody{
             color:#fff;
-            margin:2px
+            margin:2px;
+            padding: 2px;
         }
     </style>
 </head>
@@ -121,11 +122,13 @@ color: #fff;
             <table class="custom-table">
                 <!-- Contenido de la tabla -->
                 <thead>
-                    <th class="p-1">Fecha</th>
-                    <th class="p-1">Brand</th>
-                    <th class="p-1">URL</th>
-                    <th class="p-0">ASIN</th>
-                    <th class="p-0">status</th>
+                    <th class="p-3">Fecha</th>
+                    <th class="p-5">Brand</th>
+                    <th class="p-3">URL</th>
+                    <th class="p-3">ASIN</th>
+                    <th class="p-3">status</th>
+                    <th class="p-3">prioridad</th>
+                    <th class="p-3">email</th>
                 </tr>
             </thead>
             <tbody id="tabla-body">
@@ -186,7 +189,7 @@ formData.append('asin_url', urlWithAsin);
  // Tu código JavaScript para cargar los datos en la tabla va aquí
  let SHEET_ID = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
     let SHEET_TITLE = 'Sheet1';
-    let SHEET_RANGE = 'A2:E20';
+    let SHEET_RANGE = 'A2:G20';
     let FULL_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${SHEET_TITLE}&range=${SHEET_RANGE}`;
 
     fetch(FULL_URL)
@@ -230,6 +233,7 @@ formData.append('asin_url', urlWithAsin);
 
 
 </script>
+<!-- script para filtrar-->
 <script>
    
 
@@ -252,60 +256,4 @@ formData.append('asin_url', urlWithAsin);
 
 
 </script>
-
-<!-- <script>
-    // let SHEET_ID1 = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
-    // let SHEET_TITLE1 = 'Sheet1';
-    // let SHEET_RANGE1 = 'A2:D10';
-    // const query = encodeURIComponent('Select A,B,C where C > 3 limit 20');
-    // let FULL_URL1 = `https://docs.google.com/spreadsheets/d/${SHEET_ID1}/gviz/tq?sheet=${SHEET_TITLE1}&range=${SHEET_RANGE1}`;
-
-    // const urlSheet = "https://docs.google.com/spreadsheets/d/12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY/edit?usp=sharing"
-
-    const base = "https://docs.google.com/spreadsheets/d/12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY/gviz/tq?";
-const query = encodeURIComponent('SELECT A, B, C  LIMIT 20');
-const url = base + 'tq=' + query;
-
-fetch(url)
-  .then(res => res.text())
-  .then(rep => {
-    // El resultado es una respuesta de Google Visualization API en formato JSONP.
-    // Debes eliminar los caracteres iniciales y finales para obtener el JSON válido.
-    const jsonString = rep.substring(47, rep.length - 2);
-    const data = JSON.parse(jsonString);
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('Error al obtener datos de la hoja de cálculo:', error);
-  });
-
-     
-</script> -->
-<script>
-
-    // const base = 'https://docs.google.com/spreadsheets/d/16G6N3G4oa_w1BTPZdZuGLJXOEI2cnXSjWb3iJ5xRBw4/gviz/tq?';
-// const output = document.querySelector('.output');
-// const query = encodeURIComponent('Select A,B,C where C > 3 limit 20');
-// const url = base + '&tq=' + query;
-//     fetch(url)
-//     .then(res => res.text())
-//     .then(rep =>{
-    //         const data = JSON.parse(rep.substr(47).slice(0,-2));
-//         const row = document.createElement('tr');
-//         output.append(row);
-//         data.table.cols.forEach((heading)=>{
-    //             const cell = document.createElement('td');
-//             cell.textContent = heading.label;
-//             row.append(cell);
-//         })
-//         data.table.rows.forEach((main)=>{
-    //             const container = document.createElement('tr');
-//             output.append(container);
-//             main.c.forEach((ele)=>{
-    //                 const cell = document.createElement('td');
-//                 cell.textContent = ele.v;
-//                 container.append(cell);
-//             })
-//         })
-//     })
-</script>
+   
