@@ -41,7 +41,17 @@
   background-color: #575757;
   transition: background-color 0.3s;
 }
-
+.custom-table th.sku,
+      .custom-table td.sku {
+        min-width: 150px; /* Ajusta el ancho según tus necesidades */
+        max-width: 200px; /* Ajusta el ancho máximo si lo deseas */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        transition: min-width 0.3s; /* Agrega una transición para el ancho mínimo */
+      }
+      
 .custom-table a {
   color: #007bff;
   text-decoration: none;
@@ -115,6 +125,26 @@ iframe {
     border: none;
     height: 30rem;
 }
+/* Estilo para la columna de Observaciones */
+.custom-table th.observacion,
+.custom-table td.observacion {
+  min-width: 400px; /* Ajusta el ancho según tus necesidades */
+  max-width: 400px; /* Ajusta el ancho máximo si lo deseas */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: min-width 0.3s; /* Agrega una transición para el ancho mínimo */
+}
+
+/* Estilo al pasar el mouse sobre la columna de Observaciones */
+.custom-table th.observacion:hover,
+.custom-table td.observacion:hover {
+  min-width: 400px; /* Ancho mínimo para mostrar todo el contenido al pasar el mouse */
+  white-space: normal;
+  overflow: visible;
+}
+
 
 
     </style>
@@ -140,7 +170,7 @@ iframe {
         <table class="custom-table" style="color: white">
                 <!-- Contenido de la tabla -->
                 <thead>
-                    <th class="p-3">sku</th>
+                    <th class="p-3 sku">sku</th>
                     <th class="p-5">Brand</th>
                     <th class="p-3">URL</th>
                     <th class="p-3">ASIN</th>
@@ -153,8 +183,8 @@ iframe {
                     <th class="p-3">fba</th>
                     <th class="p-3">% amazon</th>
                     <th class="p-3">almacenamiento </th>
-                    <!-- <th class="p-3">envio a 3pl</th>
-                    <th class="p-3">Fecha</th>
+                    <th class="p-3 observacion">Observaciones y % ROI</th>
+                     <!--<th class="p-3">Fecha</th>
                     <th class="p-5">Brand</th>
                     <th class="p-3">URL</th>
                     <th class="p-3">ASIN</th>
@@ -175,7 +205,7 @@ iframe {
             <iframe src="https://docs.google.com/spreadsheets/d/12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY/edit#gid=1846225692" frameborder="0"></iframe>
         </div>
     </div>
-    
+
         <script>
         // Agrega un evento de clic al botón
 const toggleIframeButton = document.getElementById('toggle-iframe-button');
@@ -237,7 +267,7 @@ toggleIframeButton.addEventListener('click', function () {
           link.href = value;
           link.textContent = "enlace";
           cell.appendChild(link);
-        }  else {
+        } else {
           cell.textContent = value;
         }
         row.appendChild(cell);
