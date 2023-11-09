@@ -3,65 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />    <title>Primera instancia</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="/global.css" rel="stylesheet">
-   
     <link rel="icon" href="/images/Untitled design.png" sizes="36x36" type="image/png">
     <link href="/css globales/navbar.css" rel="stylesheet">
     <link href="/Store 01/primerainstancia.css" rel="stylesheet"> 
-    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/> -->
-  
     <style>
-        .centered-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Ajusta la altura según tus necesidades */
-            position: relative; /* Agregamos posición relativa para el div contenedor */
+            /* Estilos para una tabla moderna y futurista */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0; /* Agrega margen en la parte superior e inferior */
         }
 
-        /* Estilos para el botón */
-        .futuristic-button {
-            background-color: #0077ff;
-            color: #fff;
+        .custom-table th, .custom-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd; /* Cambia el color de las líneas de borde a gris */
+            color: #333; /* Cambia el color del texto a negro */
+        }
+
+        .custom-table thead {
+            background-color: #333; /* Cambia el color de fondo del encabezado a negro */
+            color: #fff; /* Cambia el color del texto del encabezado a blanco */
+        }
+
+        .custom-table th {
+            font-weight: bold;
+        }
+
+        .custom-table tbody tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        .custom-table a {
+            text-decoration: none;
+            color: #007bff; /* Cambia el color de los enlaces a azul */
+        }
+
+        .custom-table a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilo para el botón de alternar */
+        .toggle-button {
+            margin: 20px auto 40px auto; /* Margen superior e inferior añadidos y centrado horizontalmente */
+            display: block;
             padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
             border: none;
-            border-radius: 1px;
-            font-size: 16px;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            position: absolute; /* Posición absoluta para que quede arriba */
-            top: 20px; /* Ajusta la distancia desde la parte superior según tus necesidades */
+            transition: background-color 0.3s;
         }
 
-        /* Estilos para el iframe */
+        .toggle-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilo para el contenedor del iframe */
         .iframe-container {
-            overflow: hidden;
-            display: none; 
-            margin: 5rem;/* Oculta el iframe por defecto */
+            max-width: 100%;
+            overflow-x: auto;
+            margin: 0 20px; /* Añade márgenes laterales al igual que la tabla */
+            position: relative; /* Agrega posicionamiento relativo para permitir el botón superpuesto */
         }
 
-        .iframe-container iframe {
-            width: 300px; /* Cambia el ancho del iframe según tus preferencias */
-            height: 600px; /* Cambia la altura del iframe según tus preferencias */
-            border: 1px solid #ccc;
-            margin-top: 20rem; /* Añade un borde al iframe si lo deseas */
+        /* Ajustar el ancho del iframe al 100% y quitar los bordes */
+        iframe {
+            width: 100%;
+            border: none;
+            height: 30rem;
         }
 
-        /* Estilos para mostrar el iframe cuando se hace clic en el botón */
-        .show-iframe .iframe-container {
-            display: block; /* Muestra el iframe cuando tiene la clase .show-iframe */
-        }
-        .custom-table{
-color: #fff;
-        }
-        tbody{
-            color:#fff;
-            margin:2px;
-            padding: 2px;
-        }
     </style>
 </head>
 <body class="xx">
@@ -85,14 +100,6 @@ color: #fff;
                     <label for="brand" class="block text-white text-sm font-medium mb-2">Brand</label>
                     <input type="text" id="brand" name="brand" class="w-full px-4 py-2 rounded-lg  border border-gray-600 focus:outline-none focus:border-blue-400" required>
                 </div>
-                <!-- <div class="mb-4">
-                    <label for="status" class="block text-white text-sm font-medium mb-2">Estado</label>
-                    <select id="status" name="status" class="w-full px-4 py-2 rounded-lg  border border-gray-600 focus:outline-none focus:border-blue-400" required>
-                        <option value="rechazado">rechazado</option>
-                        <option value="aceptado">aceptado</option>
-                        <option value="pendiente">pendiente</option>
-                    </select>
-                </div> -->
                 <div class="mb-4">
                     <label for="category" class="block text-white text-sm font-medium mb-2">Prioridad</label>
                     <select id="category" name="prioridad" class="w-full px-4 py-2 rounded-lg  border border-gray-600 focus:outline-none focus:border-blue-400" required>
@@ -103,23 +110,22 @@ color: #fff;
                 </div>
                 <div class="justify-center boton-form">
                     <button type="submit" class="bg-blue-700 text-white mt-2 mb-2 py-1 px-2 rounded w-20 hover:bg-blue-600 transition duration-300">Exportar</button>
-
                 </div>
-                
             </form>
+    </div>
+    <div class="iframe">
+        <button id="toggle-iframe-button" class="toggle-button">Mostrar Sheet</button>
+        <div id="iframeContainer" class="iframe-container" style="display: none;">
+            <iframe src="https://docs.google.com/spreadsheets/d/12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY/edit#gid=0" frameborder="0"></iframe>
         </div>
-        <div class="flex flex-col items-center mt-4">
-            <label for="asinFilter" class="text-white mb-2">Filtrar por Asin</label>
-            <input type="text" id="asinFilter" class="px-3 py-2 rounded border bg-white text-gray-800 focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-400">
-            <button class="bg-blue-700 text-white mt-2 mb-2 py-1 px-2 rounded w-20 hover:bg-blue-600 transition duration-300">Buscar</button>
-        </div>
-        <div class="centered-container">
-            <button id="toggleButton" class="futuristic-button">Mostrar/Ocultar</button>
-            <div id="iframeContainer" class="iframe-container" style="display: none;">
-                <!-- Contenido del iframe -->
-                <iframe src="https://docs.google.com/spreadsheets/d/12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY/edit#gid=0" frameborder="0"></iframe>
-            </div>
-            <table class="custom-table">
+    </div>
+    <div class="flex flex-col items-center mt-4">
+        <label for="asinFilter" class="text-white mb-2">Filtrar por Asin</label>
+        <input type="text" id="asinFilter" class="px-3 py-2 rounded border bg-white text-gray-800 focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-400">
+        <button class="bg-blue-700 text-white mt-2 mb-2 py-1 px-2 rounded w-20 hover:bg-blue-600 transition duration-300">Buscar</button>
+    </div>
+    <div class="centered-container">    
+        <table class="custom-table">
                 <!-- Contenido de la tabla -->
                 <thead>
                     <th class="p-3">Fecha</th>
@@ -136,21 +142,24 @@ color: #fff;
             </tbody>
         </table>
     </div>
-        <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var toggleButton = document.getElementById("toggleButton");
-        var iframeContainer = document.getElementById("iframeContainer");
+    <script>
+            // Agrega un evento de clic al botón
+        const toggleIframeButton = document.getElementById('toggle-iframe-button');
+        const iframeContainer = document.getElementById('iframeContainer');
+        let isIframeVisible = false;
 
-        toggleButton.addEventListener("click", function () {
-            if (iframeContainer.style.display === "none" || iframeContainer.style.display === "") {
-                iframeContainer.style.display = "block";
+        toggleIframeButton.addEventListener('click', function () {
+            if (isIframeVisible) {
+                iframeContainer.style.display = 'none'; // Oculta el iframe
+                toggleIframeButton.textContent = 'Mostrar Sheet'; // Cambia el texto del botón
             } else {
-                iframeContainer.style.display = "none";
+                iframeContainer.style.display = 'block'; // Muestra el iframe
+                toggleIframeButton.textContent = 'Ocultar Sheet'; // Cambia el texto del botón
             }
+            isIframeVisible = !isIframeVisible; // Cambia el estado
         });
-    });
 
-        </script>
+    </script>
 </body>
 </html>
 <script>
