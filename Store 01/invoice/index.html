@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    <title>Primera instancia</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/global.css" rel="stylesheet">
+    <link rel="icon" href="/images/Untitled design.png" sizes="36x36" type="image/png">
+    <link href="/css globales/navbar.css" rel="stylesheet">
+    <link href="/Store 01/primerainstancia.css" rel="stylesheet"> 
+  
+    <style>
+  /* Estilo para la tabla */
+  .custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.custom-table th, .custom-table td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #525151;
+}
+
+.custom-table th {
+  background-color: #222222;
+  color: #ffffff;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #575757;
+  transition: background-color 0.3s;
+}
+.custom-table th.sku,
+      .custom-table td.sku {
+        min-width: 150px; /* Ajusta el ancho según tus necesidades */
+        max-width: 200px; /* Ajusta el ancho máximo si lo deseas */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        transition: min-width 0.3s; /* Agrega una transición para el ancho mínimo */
+      }
+      
+.custom-table a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.custom-table a:hover {
+  color: #0056b3;
+}
+
+/* Estilo para las imágenes */
+.custom-table img {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.2s;
+}
+
+.custom-table img:hover {
+  transform: scale(5.1);
+}
+
+/* Establece un ancho máximo para la tabla y agrega desplazamiento horizontal */
+.custom-table-container {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 0 20px;
+}
+.filter-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .filter-label {
+            color: #fff;
+        }
+
+        .filter-select {
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+/* Estilo para el botón de alternar */
+.toggle-button {
+    margin: 20px auto 40px auto; /* Margen superior e inferior añadidos y centrado horizontalmente */
+    display: block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para el contenedor del iframe */
+.iframe-container {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 0 20px; /* Añade márgenes laterales al igual que la tabla */
+    position: relative; /* Agrega posicionamiento relativo para permitir el botón superpuesto */
+}
+
+/* Ajustar el ancho del iframe al 100% y quitar los bordes */
+iframe {
+    width: 100%;
+    border: none;
+    height: 30rem;
+}
+/* Estilo para la columna de Observaciones */
+.custom-table th.observacion,
+.custom-table td.observacion {
+  min-width: 400px; /* Ajusta el ancho según tus necesidades */
+  max-width: 400px; /* Ajusta el ancho máximo si lo deseas */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: min-width 0.3s; /* Agrega una transición para el ancho mínimo */
+}
+
+/* Estilo al pasar el mouse sobre la columna de Observaciones */
+.custom-table th.observacion:hover,
+.custom-table td.observacion:hover {
+  min-width: 400px; /* Ancho mínimo para mostrar todo el contenido al pasar el mouse */
+  white-space: normal;
+  overflow: visible;
+}
+
+
+
+    </style>
+</head>
+<body class="xx">
+    <nav class="navbar-custom">
+        <a class="navbar-brand" href="/Store 01/panel/index.html">
+            <img src="/images/logohh.jpeg" alt="Logo HUA-HUM">
+        </a>
+        <h2>Hua-Hum Store</h2>
+    </nav>
+    <div class="filter-container">
+        <label class="filter-label" for="filter-status">Filer by brand:</label>
+        <select class="filter-select" id="filter-status">
+            <option value="todos">All brands</option>
+            <option value="publicado">nike</option>
+            <option value="rechazado">puma</option>
+            <option value="pendiente">adidas</option>
+        </select>
+    </div>
+   
+    <div class="custom-table-container">
+        <table class="custom-table" style="color: white">
+            <thead>
+                <tr> <!-- Agrega esta línea -->
+                    <th>N° de invoice</th>
+                    <th class="p-3 sku">N° de producto</th>
+                    <th class="p-5">Brand</th>
+                    <th class="p-3">URL</th>
+                    <th class="p-3">Url Amazon</th>
+                    <th class="p-3">ASIN</th>
+                    <th class="p-3">imagen</th>
+                </tr> <!-- Agrega esta línea -->
+            </thead>
+            
+            <tbody id="tabla-body">
+                <!-- Aquí se cargarán los datos de la hoja de cálculo usando JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    <div class="iframe">
+        <button id="toggle-iframe-button" class="toggle-button">Mostrar Sheet</button>
+        <div id="iframeContainer" class="iframe-container" style="display: none;">
+            <!-- Contenido del iframe -->
+            <iframe src="https://docs.google.com/spreadsheets/d/12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY/edit#gid=642519159" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Agrega un evento de clic al botón
+            const toggleIframeButton = document.getElementById('toggle-iframe-button');
+            const iframeContainer = document.getElementById('iframeContainer');
+            let isIframeVisible = false;
+
+            toggleIframeButton.addEventListener('click', function () {
+                if (isIframeVisible) {
+                    iframeContainer.style.display = 'none'; // Oculta el iframe
+                    toggleIframeButton.textContent = 'Mostrar Sheet'; // Cambia el texto del botón
+                } else {
+                    iframeContainer.style.display = 'block'; // Muestra el iframe
+                    toggleIframeButton.textContent = 'Ocultar Sheet'; // Cambia el texto del botón
+                }
+                isIframeVisible = !isIframeVisible; // Cambia el estado
+            });
+
+    </script>
+</body>
+</html>
+
+
+<script>
+     // Tu código JavaScript para cargar los datos en la tabla va aquí
+ let SHEET_ID = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
+    let SHEET_TITLE = 'invoice';
+    let SHEET_RANGE = 'A2:T20';
+    let FULL_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${SHEET_TITLE}&range=${SHEET_RANGE}`;
+ fetch(FULL_URL)
+  .then(res => res.text())
+  .then(rep => {
+    let data = JSON.parse(rep.substr(47).slice(0, -2));
+
+    // Obtener la tabla existente y su cuerpo
+    let tablaBody = document.getElementById('tabla-body');
+
+    // Limpiar la tabla existente eliminando todas las filas
+    while (tablaBody.firstChild) {
+      tablaBody.removeChild(tablaBody.firstChild);
+    }
+
+    // Iterar a través de los nuevos datos y agregar filas a la tabla
+    for (let i = 0; i < data.table.rows.length; i++) {
+      let row = document.createElement('tr');
+      for (let j = 0; j < data.table.cols.length; j++) {
+        let cell = document.createElement('td');
+        let value = data.table.rows[i].c[j].v;
+
+        if (j === 6) {
+          // Si es la columna que contiene la URL de la imagen
+          let img = document.createElement('img');
+          img.src = value;
+          img.width = 50; // Tamaño de la imagen en píxeles
+          cell.appendChild(img);
+        }
+        else if (j === 3) {
+          // Si quieres que los enlaces sean clicables
+          let link = document.createElement('a');
+          link.href = value;
+          link.textContent = "enlace";
+          cell.appendChild(link);
+        }  else if (j === 4) {
+          // Si quieres que los enlaces sean clicables
+          let link = document.createElement('a');
+          link.href = value;
+          link.textContent = "enlace";
+          cell.appendChild(link);
+         }
+         else {
+          cell.textContent = value;
+        }
+        row.appendChild(cell);
+      }
+      tablaBody.appendChild(row);
+    }
+  })
+  .catch(error => {
+    // console.error('Error al obtener los datos:', error);
+  });
+
+ 
+</script>
+<script>
+  function filterTableByBrand(selectedBrand) {
+    const tablaBody = document.getElementById('tabla-body');
+    const rows = tablaBody.rows;
+
+    for (let i = 0; i < rows.length; i++) {
+        const brandCell = rows[i].cells[2]; // La columna 2 representa la columna de "Brand"
+        const brand = brandCell.textContent.toLowerCase();
+
+        if (selectedBrand === 'todos' || brand === selectedBrand) {
+            rows[i].style.display = ''; // Muestra la fila
+        } else {
+            rows[i].style.display = 'none'; // Oculta la fila
+        }
+    }
+}
+
+// Agrega un evento de cambio al menú desplegable para aplicar el filtro
+const filterSelect = document.getElementById('filter-status');
+filterSelect.addEventListener('change', function () {
+    const selectedBrand = filterSelect.value;
+    filterTableByBrand(selectedBrand);
+});
+
+</script>
+
+   
