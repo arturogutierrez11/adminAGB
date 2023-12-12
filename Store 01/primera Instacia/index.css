@@ -1,0 +1,82 @@
+/* Estilos del contenedor principal */
+
+        /* Estilo para el botón de alternar */
+        .toggle-button {
+            margin: 20px auto 40px auto; /* Margen superior e inferior añadidos y centrado horizontalmente */
+            display: block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilo para el contenedor del iframe */
+        .iframe-container {
+            max-width: 100%;
+            overflow-x: auto;
+            margin: 0 20px; /* Añade márgenes laterales al igual que la tabla */
+            position: relative; /* Agrega posicionamiento relativo para permitir el botón superpuesto */
+        }
+
+        /* Ajustar el ancho del iframe al 100% y quitar los bordes */
+        iframe {
+            width: 100%;
+            border: none;
+            height: 30rem;
+        }
+/*------------------------------------------------------------------------------*/
+/* Estilos para la tabla */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si es necesario */
+
+    /* Nuevos estilos para pantallas más grandes (más de 600px) */
+    @media (min-width: 601px) {
+        margin: 20px; /* Márgenes en todas las direcciones */
+    }
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #333; /* Todas las líneas del mismo color */
+    min-width: 120px; /* Ancho mínimo de cada celda */
+}
+
+.custom-table thead {
+    background-color: #333;
+    color: #fff;
+}
+
+.custom-table th {
+    font-weight: bold;
+}
+
+.custom-table tbody tr:nth-child(even) {
+    background-color: #222; /* Color de fondo para filas pares */
+}
+
+.custom-table a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.custom-table a:hover {
+    color: #0056b3;
+}
+
