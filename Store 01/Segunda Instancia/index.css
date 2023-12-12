@@ -118,3 +118,64 @@ h1 {
     }
 }
 
+
+/* Estilos para el botón */
+.futuristic-button {
+    background-color: #0077ff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px; /* Ajusta el radio de la esquina según tus preferencias */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 10px; /* Añade un margen derecho entre los botones */
+}
+
+.futuristic-button a {
+    color: #fff; /* Color del enlace dentro del botón */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    position: relative;
+    margin-bottom: 20px; /* Añade margen inferior para separar las tarjetas */
+}
+ /* Estilos para el contenedor del iframe */
+.iframe-container {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 20px; /* Márgenes en todas las direcciones */
+}
+
+/* Estilos para el iframe */
+iframe {
+    width: 100%;
+    border: none;
+    height: 30rem;
+}
+/* Estilos para mostrar el iframe cuando se hace clic en el botón */
+.show-iframe .iframe-container {
+    display: block; /* Muestra el iframe cuando tiene la clase .show-iframe */
+}
+ /* Estilos para el contenedor */
+ .instance-container {
+    text-align: center; /* Centrar el texto en el contenedor */
+    margin-top: 20px; /* Espacio superior para separar de otros elementos */
+    margin-bottom: 20px; /* Espacio inferior para separar de otros elementos */
+}
+
+/* Estilos para el título */
+.instance-title {
+    color: #0077ff; /* Color similar al de los botones */
+    font-size: 24px; /* Ajusta el tamaño del texto según tus preferencias */
+}
+
+.instance-title sup {
+    font-size: 14px; /* Ajusta el tamaño del superíndice según tus preferencias */
+}

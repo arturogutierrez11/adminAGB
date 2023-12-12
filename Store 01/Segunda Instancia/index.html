@@ -12,49 +12,7 @@
     <link href="/Store 01/Segunda Instancia/index.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="ruta/a/fontawesome-all.min.css">
-    <style>
-       
 
-        /* Estilos para el botón */
-        .futuristic-button {
-            background-color: #0077ff;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 1px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            position: absolute; /* Posición absoluta para que quede arriba */
-            top: 20px; /* Ajusta la distancia desde la parte superior según tus necesidades */
-        }
-
-        .centered-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 10vh;
-            position: relative;
-            margin-bottom: 20px; /* Añade margen inferior para separar las tarjetas */
-        }
-
-        .iframe-container {
-            max-width: 100%;
-            overflow-x: auto;
-            margin: 0 20px; /* Añade márgenes laterales al igual que la tabla */
-            position: relative; /* Agrega posicionamiento relativo para permitir el botón superpuesto */
-        }
-
-      
-
-
-
-        /* Estilos para mostrar el iframe cuando se hace clic en el botón */
-        .show-iframe .iframe-container {
-            display: block; /* Muestra el iframe cuando tiene la clase .show-iframe */
-        }
-    </style>
 </head>
 <body class="xx">
     <nav class="navbar-custom">
@@ -64,215 +22,33 @@
         <h2>Hua-Hum Store</h2>
     </nav>
     <script defer src="/aceptados.js"></script>
-    <div class="bg-black rounded-md m-2 p-6"> 
+    <div class="bg-black rounded-md m-2 p-6 flex flex-col items-center">
+        <div class="flex-grow"></div>
+        <label for="brandFilter" class="text-white mb-2">Filtrar por Marca</label>
+        <input type="text" id="brandFilter" class="px-3 py-2 rounded border bg-white text-gray-800 focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-400" placeholder="Escribe la marca...">
         <div class="flex-grow"></div>
         <div class="flex flex-col items-center">
             <label for="asinFilter" class="text-white mb-2">Filtrar por ASIN</label>
-            <input type="text" id="asinFilter" class="px-3 py-2 rounded border bg-white text-gray-800 focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-400">
+            <input type="text" id="asinFilter" placeholder="Escribe el asin..." class="px-3 py-2 rounded border bg-white text-gray-800 focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-400">
             <button id="searchButton" class="bg-blue-700 text-white mt-2 mb-2 py-1 px-2 rounded w-20 hover:bg-blue-600 transition duration-300">Buscar</button>
         </div>
-        <label for="brandFilter" class="text-white mb-2">Filtrar por Marca</label>
-        <input type="text" id="brandFilter" class="px-3 py-2 rounded border bg-white text-gray-800 focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-400" placeholder="Escribe la marca...">
-        
-        
     </div>
     <div class="centered-container">
+        <button class="futuristic-button "><a href="/Store 01/primera Instacia/index.html"> Ir a 1<sup>ra</sup> Instancia</a></button>       
         <button id="toggleButton" class="futuristic-button">Mostrar/Ocultar</button>
+        <button class="futuristic-button "><a href="/Store 01/publicaciones/index.html"> Ir a 3<sup>ra</sup> Instancia</a></button>       
+    </div>
+    <div class="instance-container">
+        <h3 class="instance-title">Productos de 2<sup>da</sup> Instancia en estado pendiente</h3>
     </div>
     <div id="iframeContainer" class="iframe-container" style="display: none;">
-        <!-- Contenido del iframe -->
         <iframe src="https://docs.google.com/spreadsheets/d/12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY/edit#gid=1656452333" frameborder="0"></iframe>
     </div>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          var toggleButton = document.getElementById("toggleButton");
-          var iframeContainer = document.getElementById("iframeContainer");
-  
-          toggleButton.addEventListener("click", function () {
-              if (iframeContainer.style.display === "none" || iframeContainer.style.display === "") {
-                  iframeContainer.style.display = "block";
-              } else {
-                  iframeContainer.style.display = "none";
-              }
-          });
-      });
-  
-          </script>
+
     <div class="container mt-4">
-        <div class="row" id="card-container">     
-        </div>
+        <div class="row" id="card-container"></div>
     </div>
-    
-    <div class="iframe-container">
-        <iframe src="https://docs.google.com/spreadsheets/d/12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY/edit#gid=1656452333&amp;headers=true" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-<script>
-   
-       // JavaScript code to filter and create cards for products with "Pendiente" status
-let SHEET_ID = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
-let SHEET_TITLE = 'aceptados';
-let SHEET_RANGE = 'A2:S30';
-let FULL_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${SHEET_TITLE}&range=${SHEET_RANGE}`;
-
-fetch(FULL_URL)
-    .then(res => res.text())
-    .then(rep => {
-        let data = JSON.parse(rep.substr(47).slice(0, -2));
-        console.log(data);
-
-        // Obtener el contenedor donde se agregarán las tarjetas
-        let cardContainer = document.getElementById('card-container');
-
-        // Limpiar el contenedor existente eliminando todas las tarjetas
-        cardContainer.innerHTML = '';
-
-        // Iterate through the data and create cards for products with "Pendiente" status
-        for (let i = 0; i < data.table.rows.length; i++) {
-            let productData = data.table.rows[i].c;
-
-            // Check if the product status is "Pendiente"
-            if (productData[5].v.toLowerCase() === 'pendiente') {
-
-                let imageUrl;
-
-            if (productData[4] && productData[4].v && productData[4].v.toLowerCase() !== "#n/a" && productData[4].v.toLowerCase() !== "null") {
-                imageUrl = productData[4].v;
-            } else {
-                imageUrl = 'https://images.vexels.com/media/users/3/181818/isolated/preview/edefb9b4123a64d520dc7b91524bd9f9-icono-de-calzado-deportivo.png';
-            }
-                let card = document.createElement('div');
-                card.className = 'col-md-4 mb-4';
-
-                let cardTitleId = `cardTitle-${i}`;
-
-                // Create the content of the card
-                card.innerHTML = `
-                    <div class="card border-dark rounded" style="width: 18rem;">
-                        <img src="${imageUrl}" class="card-img-top" alt="Imagen del producto">
-                <div class="card-body text-center">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">
-                                ${productData[6].v}
-                            </h5>
-                            <p class="card-description">ASIN N°  ${productData[3].v}</p>
-                            <p class="card-description brand">${productData[1].v}</p>
-                            <p class="card-description status-color">Status: ${productData[5].v}</p>
-                            <a href="${productData[2].v}" target="_blank" class="btn btn-primary card-button">Go to Amazon Product</a>
-                        </div>
-                    </div>
-                `;
-
-                // Add the card to the container
-                cardContainer.appendChild(card);
-            }
-        }
-    })
-    .catch(error => {
-        console.error('Error al obtener los datos:', error);
-    });
-    // function getImageUrl(productData) {
-    // if (productData && productData.toLowerCase() !== "#n/a" && productData.toLowerCase() !== "null") {
-    //     return productData;
-    // } else {
-    //     return 'https://cdn-icons-png.flaticon.com/512/1785/1785348.png';
-    // }
-//}
-</script>
-<script>
-   
-        // JavaScript para filtrar tarjetas de productos por marca
-        document.addEventListener("DOMContentLoaded", function () {
-            // Obtén una referencia al campo de entrada de filtro por marca
-            var brandFilterInput = document.getElementById("brandFilter");
-            
-            // Obtén todas las tarjetas de productos
-            var productCards = document.querySelectorAll(".card");
-            
-            // Agrega un evento de escucha para el campo de entrada
-            brandFilterInput.addEventListener("input", function () {
-                var enteredBrand = brandFilterInput.value.trim().toLowerCase();
-                
-                // Itera a través de todas las tarjetas de productos
-                productCards.forEach(function (card) {
-                    var brandElement = card.querySelector(".brand");
-                    var brand = brandElement.textContent.toLowerCase();
-                    
-                    // Compara el valor ingresado en el campo de entrada con la marca de cada tarjeta
-                    if (brand.includes(enteredBrand)) {
-                        // Si coincide, muestra la tarjeta
-                        card.style.display = "block";
-                    } else {
-                        // Si no coincide, oculta la tarjeta
-                        card.style.display = "none";
-                    }
-                });
-            });
-        });
-
-</script>
+    <script src="/Store 01/Segunda Instancia/index.js"></script>
 </body>
 </html>
 
-<script>
-   // JavaScript code to filter and create cards for products with "Pendiente" status and the entered brand
-document.addEventListener("DOMContentLoaded", function () {
-    // ... (Your existing code)
-
-    // Get a reference to the brand filter input element
-    var brandFilterInput = document.getElementById("brandFilter");
-
-    // Function to update the displayed cards based on the entered brand
-    function updateFilteredCards() {
-        // Get the entered brand from the input field
-        var enteredBrand = brandFilterInput.value.toLowerCase();
-
-        // Iterate through the data and create cards for products with "Pendiente" status and the entered brand
-        for (let i = 0; i < data.table.rows.length; i++) {
-            let productData = data.table.rows[i].c;
-
-            if (productData[5].v.toLowerCase() === 'pendiente' && (enteredBrand === '' || productData[1].v.toLowerCase().includes(enteredBrand))) {
-                // ... (Your existing card creation code)
-            }
-        }
-    }
-
-    // Listen for input changes in the brand filter input field and update the displayed cards
-    brandFilterInput.addEventListener("input", updateFilteredCards);
-
-    // Initially, update the cards based on the default input value
-    updateFilteredCards();
-});
-
-</script>
-<!-- <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    // Obtén una referencia al campo de entrada de filtro por marca
-    var brandFilterInput = document.getElementById("brandFilter");
-
-    // Obtén todas las tarjetas de productos
-    var productCards = document.querySelectorAll(".card");
-
-    // Agrega un evento de escucha para el campo de entrada
-    brandFilterInput.addEventListener("input", function () {
-        var enteredBrand = brandFilterInput.value.trim().toLowerCase();
-
-        // Itera a través de todas las tarjetas de productos
-        productCards.forEach(function (card) {
-            var brandElement = card.querySelector(".brand");
-            var brand = brandElement.textContent.toLowerCase();
-
-            // Compara el valor ingresado en el campo de entrada con la marca de cada tarjeta
-            if (brand.includes(enteredBrand)) {
-                // Si coincide, muestra la tarjeta
-                card.style.display = "block";
-            } else {
-                // Si no coincide, oculta la tarjeta
-                card.style.display = "none";
-            }
-        });
-    });
-});
-
-</script> -->
