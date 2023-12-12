@@ -1,65 +1,140 @@
 .xx{
     background-color: #141414;
  }
-     table {
-    width: 90%; /* Establece el ancho al 90% del contenedor padre */
-    height: 80vh; /* Establece el alto al 80% del alto de la ventana */
-    background-color: white; /* Establece el fondo en blanco */
-    border-collapse: collapse;
-    margin: 0 auto; /* Centra la tabla horizontalmente */
-    border-radius: 2%
+/* Estilos generales para la tabla */
+.custom-table-container {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 20px;
 }
 
-    table, th, td {
-        border: 1px solid #ccc;
-    }
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #000;
+    color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
 
-    th, td {
-        padding: 10px;
-        text-align: left;
-    }
+.custom-table th, .custom-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #525151;
+    height: 50px; /* Ajusta la altura de todas las celdas */
+}
 
-    th {
-        background-color: #000000;
-        font-weight: bold;
-        color: #ccc;
-    }
+/* Estilos para las filas impares */
+.custom-table tbody tr:nth-child(odd) {
+    background-color: #575757;
+}
 
-    /* Estilos para las filas impares */
-    tr:nth-child(odd) {
-        background-color: #f9f9f9;
-    }
+.custom-table th {
+    background-color: #222222;
+    color: #ffffff;
+}
 
-    /* Estilos para los enlaces en la columna "URL Amazon" y "Store" */
-    td:nth-child(5) a,
-    td:nth-child(6) a {
-        color: #007bff;
-        text-decoration: none;
-    }
+/* Estilo para los enlaces en la columna "URL Amazon" y "Store" */
+.custom-table a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
 
-    td:nth-child(5) a:hover,
-    td:nth-child(6) a:hover {
-        text-decoration: underline;
-    }
+.custom-table a:hover {
+    color: #0056b3;
+}
 
-    /* Estilos para el encabezado de la página */
-    h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
-    }
-    @media (min-width: 1000px) {
-            
-            .x-table {
-                width: 80%;
-                margin-bottom: 1rem;
-              margin-right: 50%;
-              margin-left: 10%;
-            }}
-            @media (max-width: 640px) {
-            
-            .x-table {
-                width: 90%;
-                margin-bottom: 5rem;
-              margin-right: 5%;
-              margin-left: 5%;
-            }}
+/* Estilo para las imágenes */
+.custom-table img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.2s;
+}
+
+.custom-table img:hover {
+    transform: scale(3.1);
+}
+
+/* Estilo para la columna SKU */
+.custom-table th.sku,
+.custom-table td.sku {
+    min-width: 150px;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    transition: min-width 0.3s;
+}
+
+.filter-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.filter-label {
+    color: #fff;
+}
+
+.filter-select {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+/* Estilo para el botón de alternar */
+.toggle-button {
+    margin: 20px auto 40px auto; /* Margen superior e inferior añadidos y centrado horizontalmente */
+    display: block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para el contenedor del iframe */
+.iframe-container {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 0 20px; /* Añade márgenes laterales al igual que la tabla */
+    position: relative; /* Agrega posicionamiento relativo para permitir el botón superpuesto */
+}
+
+/* Ajustar el ancho del iframe al 100% y quitar los bordes */
+iframe {
+    width: 100%;
+    border: none;
+    height: 30rem;
+}
+/* Estilo para la columna de Observaciones */
+.custom-table th.observacion,
+.custom-table td.observacion {
+    min-width: 400px; /* Ajusta el ancho según tus necesidades */
+    max-width: 400px; /* Ajusta el ancho máximo si lo deseas */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    transition: min-width 0.3s; /* Agrega una transición para el ancho mínimo */
+}
+
+/* Estilo al pasar el mouse sobre la columna de Observaciones */
+.custom-table th.observacion:hover,
+.custom-table td.observacion:hover {
+min-width: 400px; /* Ancho mínimo para mostrar todo el contenido al pasar el mouse */
+white-space: normal;
+overflow: visible;
+}
+
+
