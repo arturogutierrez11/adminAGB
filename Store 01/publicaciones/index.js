@@ -19,7 +19,7 @@ toggleIframeButton.addEventListener('click', function () {
   // Tu código JavaScript para cargar los datos en la tabla va aquí
   let SHEET_ID = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
   let SHEET_TITLE = 'publicados';
-  let SHEET_RANGE = 'A2:N15';
+  let SHEET_RANGE = 'A2:N20';
   let FULL_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${SHEET_TITLE}&range=${SHEET_RANGE}`;
 fetch(FULL_URL)
 .then(res => res.text())

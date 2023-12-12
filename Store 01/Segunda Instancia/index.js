@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
        // JavaScript code to filter and create cards for products with "Pendiente" status
        let SHEET_ID = '12oyWR0FfX8BFTNKMMlra0p7DV6oBocQmywhmeCXK9fY';
        let SHEET_TITLE = 'aceptados';
-       let SHEET_RANGE = 'A2:G30';
+       let SHEET_RANGE = 'A2:G35';
        let FULL_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${SHEET_TITLE}&range=${SHEET_RANGE}`;
        
        fetch(FULL_URL)
