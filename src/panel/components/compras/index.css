@@ -1,0 +1,215 @@
+/* Estilos para el navbar */
+.navbar-custom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000000; /* Color de fondo del navbar */
+    z-index: 2000; /* Asegura que el navbar esté por encima de todo */
+}
+
+/* Estilos para el contenedor de filtros */
+#filtros {
+    position: fixed;
+    top: 70px; /* Ajustar según la altura del navbar */
+    left: 0;
+    width: 100%;
+    background-color: #e9e5e5; /* Color de fondo del contenedor de filtros */
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    z-index: 1500; /* Asegura que esté por encima de la tabla */
+}
+
+#filtros label {
+    margin-right: 10px;
+}
+
+#filtros select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #a9a9a9;
+    font-size: 14px;
+    margin-bottom: auto;
+}
+
+/* Estilos para el loader */
+.loader-container {
+    position: fixed;
+    top: 70px; /* Ajustar según la altura del navbar */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(74, 70, 70); /* Fondo blanco semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que el loader esté por encima de todo */
+}
+
+.loader {
+    border: 10px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 10px solid #3498db;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Estilos para la tabla de compras */
+.tabla-container {
+    width: 80%;
+    overflow-x: auto; /* Permitir desplazamiento horizontal */
+    max-height: calc(90vh - 140px); /* Altura máxima, teniendo en cuenta el navbar y los filtros */
+    margin-top: 190px; /* Espacio adicional para evitar que la tabla se solape con los filtros */
+    margin-left: auto; /* Centrar la tabla horizontalmente */
+    margin-right: auto; /* Centrar la tabla horizontalmente */
+}
+
+
+.tabla-compras {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-compras thead {
+    position: sticky;
+    top: 0; /* Fijar en la parte superior */
+    background-color: #a8a5a5;
+    z-index: 1; /* Asegura que el thead esté por encima del tbody */
+}
+
+.tabla-compras th,
+.tabla-compras td {
+    border: 1px solid #ddd;
+    padding: 6px;
+    text-align: left;
+}
+
+.tabla-compras th {
+    background-color: #a5a5a5;
+    font-size: 14px;
+}
+
+.tabla-compras tbody {
+    background-color: #ffffff; /* Fondo blanco */
+}
+
+.tabla-compras tr {
+    background-color: #ffffff; /* Color gris */
+}
+
+.tabla-compras tr:hover {
+    background-color: #dcdada; /* No cambia de color al pasar el mouse */
+}
+
+.tabla-compras tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.tabla-compras a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.tabla-compras a:hover {
+    text-decoration: underline;
+}
+.tabla-compras td:nth-child(1) {
+    text-align: center;
+}
+.tabla-compras td:nth-child(7) {
+    text-align: center;
+}
+.tabla-compras td:nth-child(8) {
+    text-align: center;
+}
+.tabla-compras td:nth-child(9) {
+    text-align: center;
+}
+/* Estilos para los filtros */
+#filtros {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center; /* Alinear los filtros horizontalmente */
+    background-color: #f2f2f2; /* Fondo gris */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+#filtros > div {
+    margin-right: 20px; /* Espaciado entre elementos */
+    display: flex; /* Alinear elementos horizontalmente */
+    flex-direction: column; /* Colocar los elementos en columna */
+    align-items: center; /* Alinear elementos al centro */
+}
+
+#filtros label {
+    margin-bottom: 5px; /* Espaciado entre etiqueta y input */
+    font-weight: bold;
+    color: #333; /* Color del texto */
+    text-align: center; /* Centrar el texto */
+}
+
+#filtros select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 200px; /* Ancho del select */
+}
+
+#filtros select:focus {
+    outline: none;
+    border-color: #3498db; /* Cambiar color del borde al enfocar */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Sombra al enfocar */
+}
+
+#filtros select option {
+    background-color: #f9f9f9; /* Color de fondo de las opciones */
+}
+
+/* Estilos para los botones de filtro */
+#filtros button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: #3498db; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+#filtros button:hover {
+    background-color: #2980b9; /* Cambiar color al pasar el mouse */
+}
+/* Estilos para el input de texto */
+.filtro input[type="text"] {
+    width: calc(100% - 30px); /* Ancho del input menos el espacio para el botón */
+    padding: 8px; /* Espaciado interno */
+    border-radius: 5px 0 0 5px; /* Bordes redondeados solo a la izquierda */
+    border: 1px solid #ccc; /* Borde del input */
+    font-size: 14px; /* Tamaño de fuente */
+    outline: none; /* Eliminar el borde de enfoque */
+}
+
+/* Estilos para el botón del input de texto */
+.filtro .input-btn {
+    width: 30px; /* Ancho del botón */
+    border: none; /* Sin borde */
+    background-color: #3498db; /* Color de fondo del botón */
+    color: #fff; /* Color del texto */
+    border-radius: 0 5px 5px 0; /* Bordes redondeados solo a la derecha */
+    cursor: pointer; /* Cursor de puntero */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+/* Estilos para el botón del input de texto al pasar el mouse */
+.filtro .input-btn:hover {
+    background-color: #2980b9; /* Cambiar color al pasar el mouse */
+}
